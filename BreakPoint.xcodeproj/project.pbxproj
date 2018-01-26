@@ -20,6 +20,7 @@
 		86CCC90F201B42EE006845B9 /* InsetTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CCC90E201B42EE006845B9 /* InsetTextField.swift */; };
 		86CCC911201B45F3006845B9 /* ShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CCC910201B45F3006845B9 /* ShadowView.swift */; };
 		86CCC913201B4725006845B9 /* AuthentificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CCC912201B4725006845B9 /* AuthentificationService.swift */; };
+		86CCC915201B7A76006845B9 /* MeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CCC914201B7A76006845B9 /* MeViewController.swift */; };
 		C05548FD1290BE0A0D5F18DC /* Pods_BreakPoint.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F8A567C88E01C2E4E0CC64B /* Pods_BreakPoint.framework */; };
 /* End PBXBuildFile section */
 
@@ -42,6 +43,7 @@
 		86CCC90E201B42EE006845B9 /* InsetTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsetTextField.swift; sourceTree = "<group>"; };
 		86CCC910201B45F3006845B9 /* ShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowView.swift; sourceTree = "<group>"; };
 		86CCC912201B4725006845B9 /* AuthentificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthentificationService.swift; sourceTree = "<group>"; };
+		86CCC914201B7A76006845B9 /* MeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +110,7 @@
 				86CCC8F1201B3290006845B9 /* GroupsViewController.swift */,
 				86CCC90A201B4178006845B9 /* AuthentificationViewController.swift */,
 				86CCC90C201B41B0006845B9 /* LoginViewController.swift */,
+				86CCC914201B7A76006845B9 /* MeViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -288,6 +291,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				86CCC915201B7A76006845B9 /* MeViewController.swift in Sources */,
 				86CCC8F2201B3290006845B9 /* GroupsViewController.swift in Sources */,
 				86CCC8EE201B3290006845B9 /* AppDelegate.swift in Sources */,
 				86CCC8F0201B3290006845B9 /* FeedViewController.swift in Sources */,
