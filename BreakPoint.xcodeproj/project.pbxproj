@@ -15,6 +15,9 @@
 		86CCC8FA201B3290006845B9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86CCC8F8201B3290006845B9 /* LaunchScreen.storyboard */; };
 		86CCC907201B3557006845B9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 86CCC906201B3557006845B9 /* GoogleService-Info.plist */; };
 		86CCC909201B37D1006845B9 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CCC908201B37D1006845B9 /* DataService.swift */; };
+		86CCC90B201B4178006845B9 /* AuthentificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CCC90A201B4178006845B9 /* AuthentificationViewController.swift */; };
+		86CCC90D201B41B0006845B9 /* LogininViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CCC90C201B41B0006845B9 /* LogininViewController.swift */; };
+		86CCC90F201B42EE006845B9 /* InsetTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CCC90E201B42EE006845B9 /* InsetTextField.swift */; };
 		C05548FD1290BE0A0D5F18DC /* Pods_BreakPoint.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F8A567C88E01C2E4E0CC64B /* Pods_BreakPoint.framework */; };
 /* End PBXBuildFile section */
 
@@ -32,6 +35,9 @@
 		86CCC8FB201B3290006845B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		86CCC906201B3557006845B9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		86CCC908201B37D1006845B9 /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
+		86CCC90A201B4178006845B9 /* AuthentificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthentificationViewController.swift; sourceTree = "<group>"; };
+		86CCC90C201B41B0006845B9 /* LogininViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogininViewController.swift; sourceTree = "<group>"; };
+		86CCC90E201B42EE006845B9 /* InsetTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsetTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +102,8 @@
 			children = (
 				86CCC8EF201B3290006845B9 /* FirstViewController.swift */,
 				86CCC8F1201B3290006845B9 /* SecondViewController.swift */,
+				86CCC90A201B4178006845B9 /* AuthentificationViewController.swift */,
+				86CCC90C201B41B0006845B9 /* LogininViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -103,6 +111,7 @@
 		86CCC902201B32E8006845B9 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				86CCC90E201B42EE006845B9 /* InsetTextField.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -276,7 +285,10 @@
 				86CCC8F2201B3290006845B9 /* SecondViewController.swift in Sources */,
 				86CCC8EE201B3290006845B9 /* AppDelegate.swift in Sources */,
 				86CCC8F0201B3290006845B9 /* FirstViewController.swift in Sources */,
+				86CCC90B201B4178006845B9 /* AuthentificationViewController.swift in Sources */,
 				86CCC909201B37D1006845B9 /* DataService.swift in Sources */,
+				86CCC90F201B42EE006845B9 /* InsetTextField.swift in Sources */,
+				86CCC90D201B41B0006845B9 /* LogininViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
