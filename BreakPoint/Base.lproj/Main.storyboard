@@ -258,10 +258,10 @@
             </objects>
             <point key="canvasLocation" x="-1546" y="0.0"/>
         </scene>
-        <!--Loginin View Controller-->
+        <!--Login View Controller-->
         <scene sceneID="q38-os-73E">
             <objects>
-                <viewController storyboardIdentifier="LoginViewController" id="8mL-ou-h7F" customClass="LogininViewController" customModule="BreakPoint" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" id="8mL-ou-h7F" customClass="LoginViewController" customModule="BreakPoint" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7mN-VV-dJu">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -273,6 +273,9 @@
                                     <constraint firstAttribute="height" constant="30" id="WdM-E4-9j8"/>
                                 </constraints>
                                 <state key="normal" image="close"/>
+                                <connections>
+                                    <action selector="closeButtonPressed:" destination="8mL-ou-h7F" eventType="touchUpInside" id="aAd-xq-TSY"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iGt-nS-Nfq">
                                 <rect key="frame" x="147" y="251" width="80" height="33"/>
@@ -283,6 +286,9 @@
                                 <state key="normal" title="SIGN IN">
                                     <color key="titleColor" red="0.015686274510000001" green="0.6705882353" blue="0.7725490196" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="signinButtonPressed:" destination="8mL-ou-h7F" eventType="touchUpInside" id="N8Z-D7-AhA"/>
+                                </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="gsm-lJ-KJH">
                                 <rect key="frame" x="30" y="70" width="315" height="161"/>
@@ -328,6 +334,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="doH-ta-Ciw"/>
                     </view>
+                    <connections>
+                        <outlet property="emailTextField" destination="NZp-Tl-CEO" id="Rni-By-0qH"/>
+                        <outlet property="passwordTextField" destination="jti-Tg-8MJ" id="WfB-Ke-0Kv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LUd-bD-Nhn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
