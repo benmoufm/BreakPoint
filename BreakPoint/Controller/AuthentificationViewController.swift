@@ -16,20 +16,17 @@ class AuthentificationViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    //MARK: - Actions
+    @IBAction func signinWithEmailButtonPressed(_ sender: Any) {
+        let loginViewController = storyboard?.instantiateViewController(withIdentifier: "LoginViewController")
+        present(loginViewController!, animated: true, completion: nil)
     }
-    
 
-    /*
-    // MARK: - Navigation
+    @IBAction func signinWithFacebookButtonPressed(_ sender: Any) {
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
     }
-    */
 
+    @IBAction func signinWithGoogleButtonPressed(_ sender: Any) {
+
+    }
 }
