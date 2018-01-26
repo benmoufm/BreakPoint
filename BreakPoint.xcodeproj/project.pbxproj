@@ -24,6 +24,7 @@
 		86CCC917201B7E65006845B9 /* CreatePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CCC916201B7E65006845B9 /* CreatePostViewController.swift */; };
 		86CCC919201B8145006845B9 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CCC918201B8145006845B9 /* UIViewExtension.swift */; };
 		86CCC91B201B892D006845B9 /* FeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CCC91A201B892D006845B9 /* FeedTableViewCell.swift */; };
+		86CCC91D201B8A6E006845B9 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CCC91C201B8A6E006845B9 /* Message.swift */; };
 		C05548FD1290BE0A0D5F18DC /* Pods_BreakPoint.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F8A567C88E01C2E4E0CC64B /* Pods_BreakPoint.framework */; };
 /* End PBXBuildFile section */
 
@@ -50,6 +51,7 @@
 		86CCC916201B7E65006845B9 /* CreatePostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostViewController.swift; sourceTree = "<group>"; };
 		86CCC918201B8145006845B9 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		86CCC91A201B892D006845B9 /* FeedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTableViewCell.swift; sourceTree = "<group>"; };
+		86CCC91C201B8A6E006845B9 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +137,7 @@
 		86CCC903201B32EF006845B9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				86CCC91C201B8A6E006845B9 /* Message.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -313,6 +316,7 @@
 				86CCC909201B37D1006845B9 /* DataService.swift in Sources */,
 				86CCC90F201B42EE006845B9 /* InsetTextField.swift in Sources */,
 				86CCC90D201B41B0006845B9 /* LoginViewController.swift in Sources */,
+				86CCC91D201B8A6E006845B9 /* Message.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
