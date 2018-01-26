@@ -151,6 +151,106 @@
             </objects>
             <point key="canvasLocation" x="750" y="360"/>
         </scene>
+        <!--Me-->
+        <scene sceneID="DmL-Ca-Wzz">
+            <objects>
+                <viewController id="tVL-Td-dSf" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Uoh-g8-LI1">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kxL-Re-9xj">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_me" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fn3-Lp-Wv1">
+                                        <rect key="frame" x="171" y="34.5" width="33" height="21"/>
+                                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="18"/>
+                                        <color key="textColor" red="0.56078431370000004" green="0.81176470590000005" blue="0.30588235289999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dxc-mK-Vr6">
+                                        <rect key="frame" x="325" y="30" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="A36-hK-i94"/>
+                                            <constraint firstAttribute="width" constant="30" id="WJ8-MS-wno"/>
+                                        </constraints>
+                                        <state key="normal" image="logoutIcon"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.16078431369999999" green="0.16862745100000001" blue="0.20392156859999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="dxc-mK-Vr6" firstAttribute="centerY" secondItem="Fn3-Lp-Wv1" secondAttribute="centerY" id="6uk-8Z-IXO"/>
+                                    <constraint firstAttribute="height" constant="70" id="Uic-Lg-Z2R"/>
+                                    <constraint firstAttribute="trailing" secondItem="dxc-mK-Vr6" secondAttribute="trailing" constant="20" id="hPH-UL-cXh"/>
+                                    <constraint firstItem="dxc-mK-Vr6" firstAttribute="top" secondItem="kxL-Re-9xj" secondAttribute="top" constant="30" id="ttF-KX-R9M"/>
+                                    <constraint firstItem="Fn3-Lp-Wv1" firstAttribute="centerX" secondItem="kxL-Re-9xj" secondAttribute="centerX" id="zb0-KM-ZdQ"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0IP-OY-51Z">
+                                <rect key="frame" x="0.0" y="70" width="375" height="275"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultProfileImage" translatesAutoresizingMaskIntoConstraints="NO" id="NQS-ay-eR5">
+                                        <rect key="frame" x="137" y="30" width="100" height="100"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="100" id="BZG-xJ-WqZ"/>
+                                            <constraint firstAttribute="width" constant="100" id="MHG-L2-ihA"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="user@breakpoint.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EJV-Aa-bjV">
+                                        <rect key="frame" x="84.5" y="150" width="206" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="q80-Wn-BkO"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="18"/>
+                                        <color key="textColor" red="0.015686274510000001" green="0.6705882353" blue="0.7725490196" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.25490196079999999" green="0.27058823529999998" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="NQS-ay-eR5" firstAttribute="centerX" secondItem="0IP-OY-51Z" secondAttribute="centerX" id="507-fo-dxu"/>
+                                    <constraint firstAttribute="height" constant="275" id="Ay8-6h-k1n"/>
+                                    <constraint firstItem="NQS-ay-eR5" firstAttribute="top" secondItem="0IP-OY-51Z" secondAttribute="top" constant="30" id="KjF-XQ-4eQ"/>
+                                    <constraint firstItem="EJV-Aa-bjV" firstAttribute="centerX" secondItem="0IP-OY-51Z" secondAttribute="centerX" id="NwI-CU-dJW"/>
+                                    <constraint firstItem="EJV-Aa-bjV" firstAttribute="top" secondItem="NQS-ay-eR5" secondAttribute="bottom" constant="20" id="SP7-PO-6Ze"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mNP-by-Z5f">
+                                <rect key="frame" x="0.0" y="345" width="375" height="273"/>
+                                <color key="backgroundColor" red="0.25490196079999999" green="0.27058823529999998" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="50" id="XDD-5c-Vet">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="XDD-5c-Vet" id="cVf-dX-EF9">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="49.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.16078431369999999" green="0.16862745100000001" blue="0.20392156859999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="0IP-OY-51Z" firstAttribute="leading" secondItem="gE5-Te-uQ7" secondAttribute="leading" id="4GB-lz-aBn"/>
+                            <constraint firstItem="0IP-OY-51Z" firstAttribute="trailing" secondItem="gE5-Te-uQ7" secondAttribute="trailing" id="EDS-5c-MOA"/>
+                            <constraint firstItem="kxL-Re-9xj" firstAttribute="top" secondItem="Uoh-g8-LI1" secondAttribute="top" id="HtG-sZ-46a"/>
+                            <constraint firstItem="mNP-by-Z5f" firstAttribute="top" secondItem="0IP-OY-51Z" secondAttribute="bottom" id="OJd-4w-YHg"/>
+                            <constraint firstItem="kxL-Re-9xj" firstAttribute="trailing" secondItem="gE5-Te-uQ7" secondAttribute="trailing" id="OlJ-mf-hAc"/>
+                            <constraint firstItem="kxL-Re-9xj" firstAttribute="leading" secondItem="gE5-Te-uQ7" secondAttribute="leading" id="ZaL-Bg-rgb"/>
+                            <constraint firstItem="0IP-OY-51Z" firstAttribute="top" secondItem="kxL-Re-9xj" secondAttribute="bottom" id="cL8-Mp-BoU"/>
+                            <constraint firstItem="gE5-Te-uQ7" firstAttribute="trailing" secondItem="mNP-by-Z5f" secondAttribute="trailing" id="gGT-LQ-Cr3"/>
+                            <constraint firstItem="mNP-by-Z5f" firstAttribute="leading" secondItem="gE5-Te-uQ7" secondAttribute="leading" id="jH6-sK-1jF"/>
+                            <constraint firstItem="gE5-Te-uQ7" firstAttribute="bottom" secondItem="mNP-by-Z5f" secondAttribute="bottom" id="zJT-FS-nYj"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="gE5-Te-uQ7"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Me" image="me-tabIcon" selectedImage="me-tabIcon" id="ObW-mp-bHx"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="z7b-tE-Zww" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1423" y="0.0"/>
+        </scene>
         <!--Authentification View Controller-->
         <scene sceneID="vv9-04-c6b">
             <objects>
@@ -358,6 +458,7 @@
                     <connections>
                         <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
                         <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
+                        <segue destination="tVL-Td-dSf" kind="relationship" relationship="viewControllers" id="W4X-bV-jkj"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
@@ -369,10 +470,13 @@
         <image name="addNewIcon" width="19" height="19"/>
         <image name="close" width="21" height="20"/>
         <image name="compose" width="21" height="24"/>
+        <image name="defaultProfileImage" width="102" height="102"/>
         <image name="emailIcon" width="25" height="16"/>
         <image name="feed-tabIcon" width="25" height="21"/>
         <image name="groups-tabIcon" width="25" height="23"/>
         <image name="loginBGImage" width="375" height="284"/>
+        <image name="logoutIcon" width="19" height="21"/>
+        <image name="me-tabIcon" width="25" height="25"/>
     </resources>
     <color key="tintColor" red="0.015686274510000001" green="0.6705882353" blue="0.7725490196" alpha="1" colorSpace="calibratedRGB"/>
 </document>
