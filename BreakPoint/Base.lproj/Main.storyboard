@@ -39,6 +39,9 @@
                                             <constraint firstAttribute="height" constant="30" id="ls6-Y4-KNh"/>
                                         </constraints>
                                         <state key="normal" image="compose"/>
+                                        <connections>
+                                            <segue destination="i9s-j6-hUJ" kind="presentation" id="9SI-2D-Bxu"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.16078431369999999" green="0.16862745100000001" blue="0.20392156859999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -83,10 +86,10 @@
             </objects>
             <point key="canvasLocation" x="749.60000000000002" y="-320.68965517241384"/>
         </scene>
-        <!--View Controller-->
+        <!--Create Post View Controller-->
         <scene sceneID="Sck-uN-zav">
             <objects>
-                <viewController id="i9s-j6-hUJ" sceneMemberID="viewController">
+                <viewController id="i9s-j6-hUJ" customClass="CreatePostViewController" customModule="BreakPoint" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4ls-PO-4L2">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -108,6 +111,7 @@
                                         </constraints>
                                         <state key="normal" image="close"/>
                                         <connections>
+                                            <action selector="closeButtonPressed:" destination="i9s-j6-hUJ" eventType="touchUpInside" id="wLq-Qj-5sd"/>
                                             <action selector="signoutButtonPressed:" destination="tVL-Td-dSf" eventType="touchUpInside" id="Lb3-ba-vjJ"/>
                                         </connections>
                                     </button>
@@ -154,6 +158,9 @@
                                 <state key="normal" title=" SEND" image="send">
                                     <color key="titleColor" red="0.35376906394958496" green="0.74610286951065063" blue="0.33805432915687561" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="sendButtonPressed:" destination="i9s-j6-hUJ" eventType="touchUpInside" id="cPg-2t-AVe"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.25490196079999999" green="0.27058823529999998" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -176,6 +183,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="mNg-Om-YBm"/>
                     </view>
+                    <connections>
+                        <outlet property="emailLabel" destination="bjL-kB-z1Y" id="7C3-yP-v5M"/>
+                        <outlet property="profileImageView" destination="ySf-rB-jhj" id="t46-CP-EOa"/>
+                        <outlet property="sendButton" destination="Slr-BH-G37" id="9Zh-j7-GCh"/>
+                        <outlet property="textView" destination="k95-ge-4vB" id="Heo-C6-Dof"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z3z-Ar-XcX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

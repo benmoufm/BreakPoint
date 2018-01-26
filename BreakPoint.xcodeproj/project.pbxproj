@@ -21,6 +21,7 @@
 		86CCC911201B45F3006845B9 /* ShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CCC910201B45F3006845B9 /* ShadowView.swift */; };
 		86CCC913201B4725006845B9 /* AuthentificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CCC912201B4725006845B9 /* AuthentificationService.swift */; };
 		86CCC915201B7A76006845B9 /* MeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CCC914201B7A76006845B9 /* MeViewController.swift */; };
+		86CCC917201B7E65006845B9 /* CreatePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CCC916201B7E65006845B9 /* CreatePostViewController.swift */; };
 		C05548FD1290BE0A0D5F18DC /* Pods_BreakPoint.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F8A567C88E01C2E4E0CC64B /* Pods_BreakPoint.framework */; };
 /* End PBXBuildFile section */
 
@@ -44,6 +45,7 @@
 		86CCC910201B45F3006845B9 /* ShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowView.swift; sourceTree = "<group>"; };
 		86CCC912201B4725006845B9 /* AuthentificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthentificationService.swift; sourceTree = "<group>"; };
 		86CCC914201B7A76006845B9 /* MeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeViewController.swift; sourceTree = "<group>"; };
+		86CCC916201B7E65006845B9 /* CreatePostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +113,7 @@
 				86CCC90A201B4178006845B9 /* AuthentificationViewController.swift */,
 				86CCC90C201B41B0006845B9 /* LoginViewController.swift */,
 				86CCC914201B7A76006845B9 /* MeViewController.swift */,
+				86CCC916201B7E65006845B9 /* CreatePostViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -298,6 +301,7 @@
 				86CCC90B201B4178006845B9 /* AuthentificationViewController.swift in Sources */,
 				86CCC911201B45F3006845B9 /* ShadowView.swift in Sources */,
 				86CCC913201B4725006845B9 /* AuthentificationService.swift in Sources */,
+				86CCC917201B7E65006845B9 /* CreatePostViewController.swift in Sources */,
 				86CCC909201B37D1006845B9 /* DataService.swift in Sources */,
 				86CCC90F201B42EE006845B9 /* InsetTextField.swift in Sources */,
 				86CCC90D201B41B0006845B9 /* LoginViewController.swift in Sources */,
