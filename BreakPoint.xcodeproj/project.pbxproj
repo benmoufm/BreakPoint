@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		86CCC8EE201B3290006845B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CCC8ED201B3290006845B9 /* AppDelegate.swift */; };
-		86CCC8F0201B3290006845B9 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CCC8EF201B3290006845B9 /* FirstViewController.swift */; };
-		86CCC8F2201B3290006845B9 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CCC8F1201B3290006845B9 /* SecondViewController.swift */; };
+		86CCC8F0201B3290006845B9 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CCC8EF201B3290006845B9 /* FeedViewController.swift */; };
+		86CCC8F2201B3290006845B9 /* GroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CCC8F1201B3290006845B9 /* GroupsViewController.swift */; };
 		86CCC8F5201B3290006845B9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86CCC8F3201B3290006845B9 /* Main.storyboard */; };
 		86CCC8F7201B3290006845B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 86CCC8F6201B3290006845B9 /* Assets.xcassets */; };
 		86CCC8FA201B3290006845B9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86CCC8F8201B3290006845B9 /* LaunchScreen.storyboard */; };
@@ -29,8 +29,8 @@
 		5F8A567C88E01C2E4E0CC64B /* Pods_BreakPoint.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BreakPoint.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		86CCC8EA201B3290006845B9 /* BreakPoint.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BreakPoint.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		86CCC8ED201B3290006845B9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		86CCC8EF201B3290006845B9 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		86CCC8F1201B3290006845B9 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		86CCC8EF201B3290006845B9 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
+		86CCC8F1201B3290006845B9 /* GroupsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsViewController.swift; sourceTree = "<group>"; };
 		86CCC8F4201B3290006845B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		86CCC8F6201B3290006845B9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		86CCC8F9201B3290006845B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -104,8 +104,8 @@
 		86CCC901201B32D3006845B9 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				86CCC8EF201B3290006845B9 /* FirstViewController.swift */,
-				86CCC8F1201B3290006845B9 /* SecondViewController.swift */,
+				86CCC8EF201B3290006845B9 /* FeedViewController.swift */,
+				86CCC8F1201B3290006845B9 /* GroupsViewController.swift */,
 				86CCC90A201B4178006845B9 /* AuthentificationViewController.swift */,
 				86CCC90C201B41B0006845B9 /* LogininViewController.swift */,
 			);
@@ -288,9 +288,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				86CCC8F2201B3290006845B9 /* SecondViewController.swift in Sources */,
+				86CCC8F2201B3290006845B9 /* GroupsViewController.swift in Sources */,
 				86CCC8EE201B3290006845B9 /* AppDelegate.swift in Sources */,
-				86CCC8F0201B3290006845B9 /* FirstViewController.swift in Sources */,
+				86CCC8F0201B3290006845B9 /* FeedViewController.swift in Sources */,
 				86CCC90B201B4178006845B9 /* AuthentificationViewController.swift in Sources */,
 				86CCC911201B45F3006845B9 /* ShadowView.swift in Sources */,
 				86CCC913201B4725006845B9 /* AuthentificationService.swift in Sources */,
