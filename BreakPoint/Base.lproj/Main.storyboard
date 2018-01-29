@@ -315,10 +315,10 @@
             </objects>
             <point key="canvasLocation" x="750" y="360"/>
         </scene>
-        <!--View Controller-->
+        <!--Create Group View Controller-->
         <scene sceneID="kN9-Bz-qYd">
             <objects>
-                <viewController id="oJP-3C-Sd0" sceneMemberID="viewController">
+                <viewController id="oJP-3C-Sd0" customClass="CreateGroupViewController" customModule="BreakPoint" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KzQ-Zo-QNq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -342,10 +342,16 @@
                                         <state key="normal" title="DONE">
                                             <color key="titleColor" red="0.56078431370000004" green="0.81176470590000005" blue="0.30588235289999999" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="doneButtonPressed:" destination="oJP-3C-Sd0" eventType="touchUpInside" id="cEa-Jg-cuX"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7xb-NE-nka">
                                         <rect key="frame" x="20" y="34" width="21" height="22"/>
                                         <state key="normal" image="close"/>
+                                        <connections>
+                                            <action selector="closeButtonPressed:" destination="oJP-3C-Sd0" eventType="touchUpInside" id="ojE-YY-7uQ"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.16078431369999999" green="0.16862745100000001" blue="0.20392156859999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -440,6 +446,14 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="WXf-y9-GRQ"/>
                     </view>
+                    <connections>
+                        <outlet property="descriptionTextField" destination="F1Y-LD-rHz" id="b2u-fb-bxb"/>
+                        <outlet property="doneButton" destination="0N9-7D-Use" id="yuB-tG-d4n"/>
+                        <outlet property="emailSearchTextField" destination="Mag-Xt-0IC" id="vL8-GR-Rce"/>
+                        <outlet property="groupMemberLabel" destination="7Vz-mq-qht" id="d1r-wE-OeD"/>
+                        <outlet property="tableView" destination="Y0G-xX-d5a" id="Ogh-X6-NAz"/>
+                        <outlet property="titleTextField" destination="E2m-xQ-UsP" id="A2x-mx-lLT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hVp-Id-I1x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
