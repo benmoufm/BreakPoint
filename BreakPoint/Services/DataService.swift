@@ -85,4 +85,18 @@ class DataService {
             completion(emails)
         }
     }
+
+    func getIds(forUserNames usernames: [String], completion: @escaping (_ uids: [String]) -> Void) {
+        var uids = [String]()
+        REF_USERS.observeSingleEvent(of: .value) { (userSnapshot) in
+            guard let userSnapshot = userSnapshot.children.allObjects as? [DataSnapshot] else { return }
+            for snapshot in userSnapshot {
+                let email = snapshot.childSnapshot(forPath: "email").value as! String
+                if usernames.contains(email) {
+                    uids.append(snapshot.key)
+                }
+            }
+            completion(uids)
+        }
+    }
 }
