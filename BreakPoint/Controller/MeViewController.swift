@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class MeViewController: UIViewController {
     //MARK: - Outlets
@@ -20,6 +21,19 @@ class MeViewController: UIViewController {
 
     //MARK: - Actions
     @IBAction func signoutButtonPressed(_ sender: Any) {
-
+        let logoutPopup = UIAlertController(title: "Logout ?", message: "Are you sure you want to logout ?", preferredStyle: .actionSheet)
+        let logoutAction = UIAlertAction(title: "Logout ?", style: .destructive) { (buttonTapped) in
+            do {
+                try Auth.auth().signOut()
+                let authentificationViewController =
+                    self.storyboard?.instantiateViewController(withIdentifier: "AuthentificationViewController")
+                        as? AuthentificationViewController
+                self.present(authentificationViewController!, animated: true, completion: nil)
+            } catch {
+                debugPrint(error)
+            }
+        }
+        logoutPopup.addAction(logoutAction)
+        present(logoutPopup, animated: true, completion: nil)
     }
 }
