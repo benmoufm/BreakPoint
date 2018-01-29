@@ -24,7 +24,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         DataService.instance.getAllFeedMessages { (messages) in
-            self.messages = messages
+            self.messages = messages.reversed()
             self.tableView.reloadData()
         }
     }
