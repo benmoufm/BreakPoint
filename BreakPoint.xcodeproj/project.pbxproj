@@ -11,6 +11,7 @@
 		8643D4DC201F25F40094B175 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8643D4DB201F25F40094B175 /* UserTableViewCell.swift */; };
 		8643D4DE201F3A020094B175 /* GroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8643D4DD201F3A020094B175 /* GroupTableViewCell.swift */; };
 		8643D4E0201F77700094B175 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8643D4DF201F77700094B175 /* Group.swift */; };
+		8643D4E2201F7D7C0094B175 /* GroupFeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8643D4E1201F7D7C0094B175 /* GroupFeedTableViewCell.swift */; };
 		86CCC8EE201B3290006845B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CCC8ED201B3290006845B9 /* AppDelegate.swift */; };
 		86CCC8F0201B3290006845B9 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CCC8EF201B3290006845B9 /* FeedViewController.swift */; };
 		86CCC8F2201B3290006845B9 /* GroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CCC8F1201B3290006845B9 /* GroupsViewController.swift */; };
@@ -40,6 +41,7 @@
 		8643D4DB201F25F40094B175 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		8643D4DD201F3A020094B175 /* GroupTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupTableViewCell.swift; sourceTree = "<group>"; };
 		8643D4DF201F77700094B175 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
+		8643D4E1201F7D7C0094B175 /* GroupFeedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupFeedTableViewCell.swift; sourceTree = "<group>"; };
 		86CCC8EA201B3290006845B9 /* BreakPoint.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BreakPoint.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		86CCC8ED201B3290006845B9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		86CCC8EF201B3290006845B9 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 				86CCC91A201B892D006845B9 /* FeedTableViewCell.swift */,
 				8643D4DB201F25F40094B175 /* UserTableViewCell.swift */,
 				8643D4DD201F3A020094B175 /* GroupTableViewCell.swift */,
+				8643D4E1201F7D7C0094B175 /* GroupFeedTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -324,6 +327,7 @@
 				86CCC90B201B4178006845B9 /* AuthentificationViewController.swift in Sources */,
 				8643D4DA201F233E0094B175 /* CreateGroupViewController.swift in Sources */,
 				86CCC91B201B892D006845B9 /* FeedTableViewCell.swift in Sources */,
+				8643D4E2201F7D7C0094B175 /* GroupFeedTableViewCell.swift in Sources */,
 				8643D4E0201F77700094B175 /* Group.swift in Sources */,
 				86CCC911201B45F3006845B9 /* ShadowView.swift in Sources */,
 				86CCC919201B8145006845B9 /* UIViewExtension.swift in Sources */,
