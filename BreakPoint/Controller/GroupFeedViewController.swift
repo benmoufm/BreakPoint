@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GroupFeedViewController: UIViewController {
+class GroupFeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     //MARK: - Outlets
     @IBOutlet weak var groupTitleLabel: UILabel!
     @IBOutlet weak var membersLabel: UILabel!
@@ -24,6 +24,8 @@ class GroupFeedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         sendMessageView.bindToKeyboard()
+        tableView.delegate = self
+        tableView.dataSource = self
     }
 
     func initData(forGroup group: Group) {
@@ -42,6 +44,25 @@ class GroupFeedViewController: UIViewController {
                 self.tableView.reloadData()
             })
         }
+    }
+
+    //MARK: - UITableViewDelegate & UITableViewDataSource
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return messages.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "groupFeedCell") as? GroupFeedTableViewCell
+            else { return UITableViewCell() }
+        let message = messages[indexPath.row]
+        DataService.instance.getUserName(forUID: message.senderId) { (email) in
+            cell.configureCell(profileImage: #imageLiteral(resourceName: "defaultProfileImage"), email: email, content: message.content)
+        }
+        return cell
     }
 
     //MARK: - Actions
