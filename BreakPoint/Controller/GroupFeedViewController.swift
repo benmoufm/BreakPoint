@@ -19,6 +19,7 @@ class GroupFeedViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        sendMessageView.bindToKeyboard()
     }
 
     //MARK: - Actions
