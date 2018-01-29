@@ -362,10 +362,10 @@
             </objects>
             <point key="canvasLocation" x="749.60000000000002" y="359.37031484257875"/>
         </scene>
-        <!--View Controller-->
+        <!--Group Feed View Controller-->
         <scene sceneID="wfS-AR-p0n">
             <objects>
-                <viewController id="gUX-Qz-h4g" sceneMemberID="viewController">
+                <viewController id="gUX-Qz-h4g" customClass="GroupFeedViewController" customModule="BreakPoint" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6sK-NK-uzU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -386,6 +386,9 @@
                                             <constraint firstAttribute="height" constant="30" id="vtA-15-kfc"/>
                                         </constraints>
                                         <state key="normal" image="backIcon"/>
+                                        <connections>
+                                            <action selector="backButtonPressed:" destination="gUX-Qz-h4g" eventType="touchUpInside" id="XX7-iA-BJP"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.16078431369999999" green="0.16862745100000001" blue="0.20392156859999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -470,6 +473,9 @@
                                             <constraint firstAttribute="height" constant="30" id="Y1o-oc-TKd"/>
                                         </constraints>
                                         <state key="normal" image="send"/>
+                                        <connections>
+                                            <action selector="sendButtonPressed:" destination="gUX-Qz-h4g" eventType="touchUpInside" id="jBb-ZZ-x7I"/>
+                                        </connections>
                                     </button>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="send a message..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="b0i-F3-ngV" customClass="InsetTextField" customModule="BreakPoint" customModuleProvider="target">
                                         <rect key="frame" x="15" y="15" width="307" height="30"/>
@@ -510,6 +516,14 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Nzk-ZO-a0z"/>
                     </view>
+                    <connections>
+                        <outlet property="groupTitleLabel" destination="GZ4-Bv-ANm" id="aSj-6V-tAu"/>
+                        <outlet property="membersLabel" destination="Z0w-Fm-wpY" id="cY4-zs-veh"/>
+                        <outlet property="messageTextField" destination="b0i-F3-ngV" id="DVp-eW-Td6"/>
+                        <outlet property="sendButton" destination="qD5-wo-18F" id="KHV-IM-P0n"/>
+                        <outlet property="sendMessageView" destination="Ja3-J1-qJ6" id="hlH-O4-L8I"/>
+                        <outlet property="tableView" destination="vEU-fn-Nu0" id="MfK-ur-pAB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T4C-Gg-dki" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
