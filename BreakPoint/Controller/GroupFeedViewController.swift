@@ -43,6 +43,10 @@ class GroupFeedViewController: UIViewController, UITableViewDelegate, UITableVie
             DataService.instance.getAllMessages(forDesiredGroup: self.group!, completion: { (messages) in
                 self.messages = messages
                 self.tableView.reloadData()
+                // Scroll to last message
+                if self.messages.count > 0 {
+                    self.tableView.scrollToRow(at: IndexPath.init(row: self.messages.count - 1, section: 0), at: .bottom, animated: true)
+                }
             })
         }
     }
