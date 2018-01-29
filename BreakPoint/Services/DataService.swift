@@ -89,6 +89,21 @@ class DataService {
         }
     }
 
+    func getAllMessages(forDesiredGroup group: Group, completion: @escaping (_ messages: [Message]) -> Void) {
+        var messages = [Message]()
+        REF_GROUPS.child(group.key).child("messages").observeSingleEvent(of: .value) { (messageSnapshot) in
+            guard let messageSnapshot = messageSnapshot.children.allObjects as? [DataSnapshot]
+                else { return }
+            for snapshot in messageSnapshot {
+                let content = snapshot.childSnapshot(forPath: "content").value as! String
+                let senderId = snapshot.childSnapshot(forPath: "senderId").value as! String
+                let message = Message(content: content, senderId: senderId)
+                messages.append(message)
+            }
+            completion(messages)
+        }
+    }
+
     func getEmail(forSearchQuery query: String, completion: @escaping (_ emailArray: [String]) -> Void) {
         var emails = [String]()
         REF_USERS.observe(.value) { (userSnapshot) in
