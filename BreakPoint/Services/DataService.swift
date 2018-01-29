@@ -47,6 +47,21 @@ class DataService {
         }
     }
 
+    func getEmails(forGroup group: Group, completion: @escaping (_ emails: [String]) -> Void) {
+        var emails = [String]()
+        REF_USERS.observeSingleEvent(of: .value) { (userSnapshot) in
+            guard let userSnapshot = userSnapshot.children.allObjects as? [DataSnapshot]
+                else { return }
+            for snapshot in userSnapshot {
+                if group.members.contains(snapshot.key) {
+                    let email = snapshot.childSnapshot(forPath: "email").value as! String
+                    emails.append(email)
+                }
+            }
+            completion(emails)
+        }
+    }
+
     func uploadPost(withMessage message: String, forUID uid: String, withGroupKey groupKey: String?,
                     completion: @escaping (_ success: Bool) -> Void) {
         if groupKey != nil {
