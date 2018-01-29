@@ -19,6 +19,7 @@ class GroupFeedViewController: UIViewController {
 
     //MARK: - Variables
     var group: Group?
+    var messages = [Message]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +35,12 @@ class GroupFeedViewController: UIViewController {
         groupTitleLabel.text = group?.title
         DataService.instance.getEmails(forGroup: group!) { (emails) in
             self.membersLabel.text = emails.joined(separator: ", ")
+        }
+        DataService.instance.REF_GROUPS.observe(.value) { (snapshot) in
+            DataService.instance.getAllMessages(forDesiredGroup: self.group!, completion: { (messages) in
+                self.messages = messages
+                self.tableView.reloadData()
+            })
         }
     }
 
