@@ -36,6 +36,17 @@ class DataService {
         REF_USERS.child(uniqueID).updateChildValues(userData)
     }
 
+    func getUserName(forUID uid: String, completion: @escaping (_ username: String) -> Void) {
+        REF_USERS.observeSingleEvent(of: .value) { (userSnapshot) in
+            guard let userSnapshot = userSnapshot.children.allObjects as? [DataSnapshot] else { return }
+            for snapshot in userSnapshot {
+                if snapshot.key == uid {
+                    completion(snapshot.childSnapshot(forPath: "email").value as! String)
+                }
+            }
+        }
+    }
+
     func uploadPost(withMessage message: String, forUID uid: String, withGroupKey groupKey: String?,
                     completion: @escaping (_ success: Bool) -> Void) {
         if groupKey != nil {
