@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class CreateGroupViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
     //MARK: - Outlets
@@ -91,7 +92,22 @@ class CreateGroupViewController: UIViewController, UITableViewDataSource, UITabl
 
     //MARK: - Actions
     @IBAction func doneButtonPressed(_ sender: Any) {
-
+        if titleTextField.text != "" && descriptionTextField.text != "" {
+            DataService.instance.getIds(forUserNames: chosenUsers, completion: { (uids) in
+                var userIds = uids
+                userIds.append((Auth.auth().currentUser?.uid)!)
+                DataService.instance.createGroup(withTitle: self.titleTextField.text!,
+                                                 andDescription: self.descriptionTextField.text!,
+                                                 forUserIds: userIds,
+                                                 completion: { (success) in
+                                                    if success {
+                                                        self.dismiss(animated: true, completion: nil)
+                                                    } else {
+                                                        debugPrint("Group could not be created")
+                                                    }
+                })
+            })
+        }
     }
 
     @IBAction func closeButtonPressed(_ sender: Any) {
