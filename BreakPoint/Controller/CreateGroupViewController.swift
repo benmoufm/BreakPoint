@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CreateGroupViewController: UIViewController {
+class CreateGroupViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     //MARK: - Outlets
     @IBOutlet weak var titleTextField: InsetTextField!
     @IBOutlet weak var descriptionTextField: InsetTextField!
@@ -19,6 +19,24 @@ class CreateGroupViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.delegate = self
+        tableView.dataSource = self
+    }
+
+    //MARK: - UITableViewDelegate & UITableViewDataSource
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 3
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "userCell") as? UserTableViewCell
+            else { return UITableViewCell() }
+        cell.configureCell(profileImage: #imageLiteral(resourceName: "defaultProfileImage"), email: "marty@mcfly.com", isSelected: true)
+        return cell
     }
 
     //MARK: - Actions
