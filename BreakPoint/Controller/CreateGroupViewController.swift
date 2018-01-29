@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CreateGroupViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class CreateGroupViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
     //MARK: - Outlets
     @IBOutlet weak var titleTextField: InsetTextField!
     @IBOutlet weak var descriptionTextField: InsetTextField!
@@ -17,10 +17,15 @@ class CreateGroupViewController: UIViewController, UITableViewDataSource, UITabl
     @IBOutlet weak var doneButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
 
+    //MARK : - Variables
+    var emails = [String]()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+        emailSearchTextField.delegate = self
+        addTargetToTextField()
     }
 
     //MARK: - UITableViewDelegate & UITableViewDataSource
@@ -29,14 +34,31 @@ class CreateGroupViewController: UIViewController, UITableViewDataSource, UITabl
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return emails.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "userCell") as? UserTableViewCell
             else { return UITableViewCell() }
-        cell.configureCell(profileImage: #imageLiteral(resourceName: "defaultProfileImage"), email: "marty@mcfly.com", isSelected: true)
+        cell.configureCell(profileImage: #imageLiteral(resourceName: "defaultProfileImage"), email: emails[indexPath.row], isSelected: true)
         return cell
+    }
+
+    //MARK: - UITextFieldDelegate
+    func addTargetToTextField() {
+        emailSearchTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+    }
+
+    @objc func textFieldDidChange() {
+        if emailSearchTextField.text == "" {
+            emails = []
+            tableView.reloadData()
+        } else {
+            DataService.instance.getEmail(forSearchQuery: emailSearchTextField.text!, completion: { (emails) in
+                self.emails = emails
+                self.tableView.reloadData()
+            })
+        }
     }
 
     //MARK: - Actions
