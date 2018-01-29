@@ -17,9 +17,22 @@ class GroupFeedViewController: UIViewController {
     @IBOutlet weak var messageTextField: InsetTextField!
     @IBOutlet weak var sendButton: UIButton!
 
+    //MARK: - Variables
+    var group: Group?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         sendMessageView.bindToKeyboard()
+    }
+
+    func initData(forGroup group: Group) {
+        self.group = group
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        groupTitleLabel.text = group?.title
+        membersLabel.text = group?.members.joined(separator: ", ")
     }
 
     //MARK: - Actions

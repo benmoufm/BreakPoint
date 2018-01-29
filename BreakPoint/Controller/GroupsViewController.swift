@@ -53,6 +53,7 @@ class GroupsViewController: UIViewController, UITableViewDataSource, UITableView
         guard let groupFeedViewController =
             storyboard?.instantiateViewController(withIdentifier: "GroupFeedViewController") as? GroupFeedViewController
             else { return }
+        groupFeedViewController.initData(forGroup: groups[indexPath.row])
         present(groupFeedViewController, animated: true)
     }
 }
