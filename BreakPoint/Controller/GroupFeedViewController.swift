@@ -72,7 +72,7 @@ class GroupFeedViewController: UIViewController, UITableViewDelegate, UITableVie
 
     //MARK: - Actions
     @IBAction func backButtonPressed(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+        dismissDetail()
     }
 
     @IBAction func sendButtonPressed(_ sender: Any) {

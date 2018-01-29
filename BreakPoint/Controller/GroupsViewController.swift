@@ -54,7 +54,7 @@ class GroupsViewController: UIViewController, UITableViewDataSource, UITableView
             storyboard?.instantiateViewController(withIdentifier: "GroupFeedViewController") as? GroupFeedViewController
             else { return }
         groupFeedViewController.initData(forGroup: groups[indexPath.row])
-        present(groupFeedViewController, animated: true)
+        presentDetail(groupFeedViewController)
     }
 }
 

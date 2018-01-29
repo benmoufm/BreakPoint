@@ -13,6 +13,7 @@
 		8643D4E0201F77700094B175 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8643D4DF201F77700094B175 /* Group.swift */; };
 		8643D4E2201F7D7C0094B175 /* GroupFeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8643D4E1201F7D7C0094B175 /* GroupFeedTableViewCell.swift */; };
 		8643D4E4201F7EF00094B175 /* GroupFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8643D4E3201F7EF00094B175 /* GroupFeedViewController.swift */; };
+		8643D4E6201F92070094B175 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8643D4E5201F92070094B175 /* UIViewControllerExtension.swift */; };
 		86CCC8EE201B3290006845B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CCC8ED201B3290006845B9 /* AppDelegate.swift */; };
 		86CCC8F0201B3290006845B9 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CCC8EF201B3290006845B9 /* FeedViewController.swift */; };
 		86CCC8F2201B3290006845B9 /* GroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CCC8F1201B3290006845B9 /* GroupsViewController.swift */; };
@@ -44,6 +45,7 @@
 		8643D4DF201F77700094B175 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		8643D4E1201F7D7C0094B175 /* GroupFeedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupFeedTableViewCell.swift; sourceTree = "<group>"; };
 		8643D4E3201F7EF00094B175 /* GroupFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupFeedViewController.swift; sourceTree = "<group>"; };
+		8643D4E5201F92070094B175 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		86CCC8EA201B3290006845B9 /* BreakPoint.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BreakPoint.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		86CCC8ED201B3290006845B9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		86CCC8EF201B3290006845B9 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 			isa = PBXGroup;
 			children = (
 				86CCC918201B8145006845B9 /* UIViewExtension.swift */,
+				8643D4E5201F92070094B175 /* UIViewControllerExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -326,6 +329,7 @@
 				86CCC8F2201B3290006845B9 /* GroupsViewController.swift in Sources */,
 				86CCC8EE201B3290006845B9 /* AppDelegate.swift in Sources */,
 				86CCC8F0201B3290006845B9 /* FeedViewController.swift in Sources */,
+				8643D4E6201F92070094B175 /* UIViewControllerExtension.swift in Sources */,
 				8643D4DC201F25F40094B175 /* UserTableViewCell.swift in Sources */,
 				86CCC90B201B4178006845B9 /* AuthentificationViewController.swift in Sources */,
 				8643D4DA201F233E0094B175 /* CreateGroupViewController.swift in Sources */,
