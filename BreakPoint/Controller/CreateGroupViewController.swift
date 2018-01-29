@@ -19,6 +19,7 @@ class CreateGroupViewController: UIViewController, UITableViewDataSource, UITabl
 
     //MARK : - Variables
     var emails = [String]()
+    var chosenUsers = [String]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +27,11 @@ class CreateGroupViewController: UIViewController, UITableViewDataSource, UITabl
         tableView.dataSource = self
         emailSearchTextField.delegate = self
         addTargetToTextField()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        doneButton.isHidden = true
     }
 
     //MARK: - UITableViewDelegate & UITableViewDataSource
@@ -40,8 +46,30 @@ class CreateGroupViewController: UIViewController, UITableViewDataSource, UITabl
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "userCell") as? UserTableViewCell
             else { return UITableViewCell() }
-        cell.configureCell(profileImage: #imageLiteral(resourceName: "defaultProfileImage"), email: emails[indexPath.row], isSelected: true)
+        if chosenUsers.contains(emails[indexPath.row]) {
+            cell.configureCell(profileImage: #imageLiteral(resourceName: "defaultProfileImage"), email: emails[indexPath.row], isSelected: true)
+        } else {
+            cell.configureCell(profileImage: #imageLiteral(resourceName: "defaultProfileImage"), email: emails[indexPath.row], isSelected: false)
+        }
         return cell
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let cell = tableView.cellForRow(at: indexPath) as? UserTableViewCell
+            else { return }
+        if !chosenUsers.contains(cell.emailLabel.text!) {
+            chosenUsers.append(cell.emailLabel.text!)
+            groupMemberLabel.text = chosenUsers.joined(separator: ", ")
+            doneButton.isHidden = false
+        } else {
+            chosenUsers = chosenUsers.filter { $0 != cell.emailLabel.text! }
+            if chosenUsers.count >= 1 {
+                groupMemberLabel.text = chosenUsers.joined(separator: ", ")
+            } else {
+                groupMemberLabel.text = "add people to your group"
+                doneButton.isHidden = true
+            }
+        }
     }
 
     //MARK: - UITextFieldDelegate
