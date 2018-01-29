@@ -99,4 +99,12 @@ class DataService {
             completion(uids)
         }
     }
+
+    func createGroup(withTitle title: String, andDescription description: String,
+                     forUserIds ids: [String], completion: @escaping (_ success: Bool) -> Void) {
+        REF_GROUPS.childByAutoId().updateChildValues(["title": title,
+                                                      "description": description,
+                                                      "members": ids])
+        completion(true)
+    }
 }
