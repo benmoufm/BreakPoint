@@ -67,6 +67,6 @@ class CreateGroupViewController: UIViewController, UITableViewDataSource, UITabl
     }
 
     @IBAction func closeButtonPressed(_ sender: Any) {
-
+        dismiss(animated: true, completion: nil)
     }
 }
