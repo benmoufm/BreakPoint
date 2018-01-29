@@ -365,7 +365,7 @@
         <!--Group Feed View Controller-->
         <scene sceneID="wfS-AR-p0n">
             <objects>
-                <viewController id="gUX-Qz-h4g" customClass="GroupFeedViewController" customModule="BreakPoint" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GroupFeedViewController" id="gUX-Qz-h4g" customClass="GroupFeedViewController" customModule="BreakPoint" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6sK-NK-uzU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

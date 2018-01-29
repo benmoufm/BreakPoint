@@ -48,5 +48,12 @@ class GroupsViewController: UIViewController, UITableViewDataSource, UITableView
                            memberCount: groups[indexPath.row].memberCount)
         return cell
     }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let groupFeedViewController =
+            storyboard?.instantiateViewController(withIdentifier: "GroupFeedViewController") as? GroupFeedViewController
+            else { return }
+        present(groupFeedViewController, animated: true)
+    }
 }
 
