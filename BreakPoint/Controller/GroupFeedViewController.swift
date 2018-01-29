@@ -32,7 +32,9 @@ class GroupFeedViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         groupTitleLabel.text = group?.title
-        membersLabel.text = group?.members.joined(separator: ", ")
+        DataService.instance.getEmails(forGroup: group!) { (emails) in
+            self.membersLabel.text = emails.joined(separator: ", ")
+        }
     }
 
     //MARK: - Actions
