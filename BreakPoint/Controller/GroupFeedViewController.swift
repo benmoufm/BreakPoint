@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class GroupFeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     //MARK: - Outlets
@@ -71,6 +72,19 @@ class GroupFeedViewController: UIViewController, UITableViewDelegate, UITableVie
     }
 
     @IBAction func sendButtonPressed(_ sender: Any) {
-
+        if messageTextField.text != "" {
+            messageTextField.isEnabled = false
+            sendButton.isEnabled = false
+            DataService.instance.uploadPost(withMessage: messageTextField.text!,
+                                            forUID: (Auth.auth().currentUser?.uid)!,
+                                            withGroupKey: group?.key,
+                                            completion: { (success) in
+                                                if success {
+                                                    self.messageTextField.text = ""
+                                                    self.messageTextField.isEnabled = true
+                                                    self.sendButton.isEnabled = true
+                                                }
+            })
+        }
     }
 }
