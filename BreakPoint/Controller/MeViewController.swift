@@ -9,19 +9,48 @@
 import UIKit
 import Firebase
 
-class MeViewController: UIViewController {
+class MeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     //MARK: - Outlets
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
 
+    //MARK: - Variables
+    var messages = [Message]()
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.delegate = self
+        tableView.dataSource = self
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.emailLabel.text = Auth.auth().currentUser?.email
+        DataService.instance.REF_FEED.observe(.value) { (snapshot) in
+            DataService.instance.getAllFeedMessages(forUID: (Auth.auth().currentUser?.uid)!) { (messages) in
+                self.messages = messages.reversed()
+                self.tableView.reloadData()
+            }
+        }
+    }
+
+    //MARK: - UITableViewDelegate & DataSource
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return messages.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "meCell") as? MeTableViewCell
+            else { return UITableViewCell() }
+        let message = messages[indexPath.row]
+        let conversationTitle = "@feed"
+        cell.configureCell(conversationTitle: conversationTitle, messageContent: message.content)
+        return cell
     }
 
     //MARK: - Actions
