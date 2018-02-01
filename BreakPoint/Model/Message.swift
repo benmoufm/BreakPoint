@@ -11,6 +11,7 @@ import Foundation
 class Message {
     private var _content: String
     private var _senderId: String
+    private(set) var group: Group?
 
     var content: String {
         return _content
@@ -19,8 +20,9 @@ class Message {
         return _senderId
     }
 
-    init(content: String, senderId: String) {
+    init(content: String, senderId: String, group: Group?) {
         self._content = content
         self._senderId = senderId
+        self.group = group
     }
 }

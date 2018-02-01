@@ -82,7 +82,7 @@ class DataService {
             for snapshot in feedMessageSnapshot {
                 let content = snapshot.childSnapshot(forPath: "content").value as! String
                 let senderId = snapshot.childSnapshot(forPath: "senderId").value as! String
-                let message = Message(content: content, senderId: senderId)
+                let message = Message(content: content, senderId: senderId, group: nil)
                 messages.append(message)
             }
             completion(messages)
@@ -97,7 +97,7 @@ class DataService {
             for snapshot in messageSnapshot {
                 let content = snapshot.childSnapshot(forPath: "content").value as! String
                 let senderId = snapshot.childSnapshot(forPath: "senderId").value as! String
-                let message = Message(content: content, senderId: senderId)
+                let message = Message(content: content, senderId: senderId, group: nil)
                 messages.append(message)
             }
             completion(messages)
