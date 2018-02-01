@@ -74,6 +74,23 @@ class DataService {
         }
     }
 
+    func getAllFeedMessages(forUID uid: String, completion: @escaping (_ messages: [Message]) -> Void) {
+        var messages = [Message]()
+        REF_FEED.observeSingleEvent(of: .value) { (feedMessageSnapshot) in
+            guard let feedMessageSnapshot = feedMessageSnapshot.children.allObjects as? [DataSnapshot]
+                else { return }
+            for snapshot in feedMessageSnapshot {
+                let senderID = snapshot.childSnapshot(forPath: "senderId").value as! String
+                if senderID == uid {
+                    let content = snapshot.childSnapshot(forPath: "content").value as! String
+                    let message = Message(content: content, senderId: senderID, group: nil)
+                    messages.append(message)
+                }
+            }
+            completion(messages)
+        }
+    }
+
     func getAllFeedMessages(completion: @escaping (_ messages: [Message]) -> Void) {
         var messages = [Message]()
         REF_FEED.observeSingleEvent(of: .value) { (feedMessageSnapshot) in
