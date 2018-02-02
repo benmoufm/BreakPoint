@@ -33,6 +33,12 @@ class MeViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
                 self.tableView.reloadData()
             }
         }
+        DataService.instance.REF_GROUPS.observe(.value) { (snapshot) in
+            DataService.instance.getAllGroupMessages(forUID: (Auth.auth().currentUser?.uid)!, completion: { (messages) in
+                self.messages += messages.reversed()
+                self.tableView.reloadData()
+            })
+        }
     }
 
     //MARK: - UITableViewDelegate & DataSource
@@ -48,7 +54,10 @@ class MeViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "meCell") as? MeTableViewCell
             else { return UITableViewCell() }
         let message = messages[indexPath.row]
-        let conversationTitle = "@feed"
+        var conversationTitle = "@feed"
+        if let group = message.group {
+            conversationTitle = "@\(group.title)"
+        }
         cell.configureCell(conversationTitle: conversationTitle, messageContent: message.content)
         return cell
     }
