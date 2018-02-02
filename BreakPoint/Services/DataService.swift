@@ -91,6 +91,39 @@ class DataService {
         }
     }
 
+    func getAllGroupMessages(forUID uid: String, completion: @escaping (_ messages: [Message]) -> Void) {
+        var messages = [Message]()
+        REF_GROUPS.observeSingleEvent(of: .value) { (groupSnapshot) in
+            guard let groupSnapshot = groupSnapshot.children.allObjects as? [DataSnapshot]
+                else { return }
+            for snapshot in groupSnapshot {
+                let groupKey = snapshot.key
+                let groupTitle = snapshot.childSnapshot(forPath: "title").value as! String
+                let groupDescription = snapshot.childSnapshot(forPath: "description").value as! String
+                let members = snapshot.childSnapshot(forPath: "members").value as! [String]
+                if members.contains(uid) {
+                    let groupMessages = snapshot.childSnapshot(forPath: "messages")
+                    guard let messagesSnapshot = groupMessages.children.allObjects as? [DataSnapshot]
+                        else { return }
+                    for messageSnapshot in messagesSnapshot {
+                        let senderId = messageSnapshot.childSnapshot(forPath: "senderId").value as! String
+                        if senderId == uid {
+                            let content = messageSnapshot.childSnapshot(forPath: "content").value as! String
+                            let message = Message(content: content,
+                                                  senderId: senderId,
+                                                  group: Group(title: groupTitle,
+                                                               description: groupDescription,
+                                                               key: groupKey,
+                                                               members: members))
+                            messages.append(message)
+                        }
+                    }
+                }
+            }
+            completion(messages)
+        }
+    }
+
     func getAllFeedMessages(completion: @escaping (_ messages: [Message]) -> Void) {
         var messages = [Message]()
         REF_FEED.observeSingleEvent(of: .value) { (feedMessageSnapshot) in
