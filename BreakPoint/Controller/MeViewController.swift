@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class MeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class MeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextViewDelegate {
     //MARK: - Outlets
     @IBOutlet weak var editProfileButton: UIButton!
     @IBOutlet weak var profileImageView: UIImageView!
@@ -25,6 +25,7 @@ class MeViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+        userDescriptionTextView.delegate = self
         userDescriptionTextView.isEditable = false
         userDescriptionTextView.backgroundColor = #colorLiteral(red: 0.2126879096, green: 0.2239724994, blue: 0.265286684, alpha: 1)
     }
@@ -48,6 +49,28 @@ class MeViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         userDescriptionTextView.isEditable = inEdition
         editProfileButton.setImage(#imageLiteral(resourceName: "compose"), for: .normal)
         userDescriptionTextView.backgroundColor = #colorLiteral(red: 0.2126879096, green: 0.2239724994, blue: 0.265286684, alpha: 1)
+    }
+
+    private func updateUserDescription() {
+        if userDescriptionTextView.text != "" {
+            userDescriptionTextView.isEditable = false
+            editProfileButton.isEnabled = false
+            DataService.instance.updateUserDescription(
+                forUID: (Auth.auth().currentUser?.uid)!,
+                userDescription: userDescriptionTextView.text,
+                completion: { (success) in
+                    if success {
+                        self.editProfileButton.isEnabled = true
+                    }
+            })
+        } else {
+            userDescriptionTextView.text = "Say something about you.."
+        }
+    }
+
+    //MARK: - UITextViewDelegate
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        textView.text = ""
     }
 
     //MARK: - UITableViewDelegate & DataSource
@@ -79,6 +102,7 @@ class MeViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
             editProfileButton.setImage(#imageLiteral(resourceName: "close"), for: .normal)
             userDescriptionTextView.backgroundColor = #colorLiteral(red: 0.1607843137, green: 0.168627451, blue: 0.2039215686, alpha: 1)
         } else {
+            updateUserDescription()
             editProfileButton.setImage(#imageLiteral(resourceName: "compose"), for: .normal)
             userDescriptionTextView.backgroundColor = #colorLiteral(red: 0.2126879096, green: 0.2239724994, blue: 0.265286684, alpha: 1)
         }
