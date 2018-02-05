@@ -112,6 +112,9 @@ class MeViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
             userDescriptionTextView.backgroundColor = #colorLiteral(red: 0.2126879096, green: 0.2239724994, blue: 0.265286684, alpha: 1)
         }
     }
+    @IBAction func profileImageButtonPressed(_ sender: Any) {
+
+    }
 
     @IBAction func signoutButtonPressed(_ sender: Any) {
         let logoutPopup = UIAlertController(title: "Logout ?", message: "Are you sure you want to logout ?", preferredStyle: .actionSheet)
