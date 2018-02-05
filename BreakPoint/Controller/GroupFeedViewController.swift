@@ -27,6 +27,7 @@ class GroupFeedViewController: UIViewController, UITableViewDelegate, UITableVie
         sendMessageView.bindToKeyboard()
         tableView.delegate = self
         tableView.dataSource = self
+        addTapGesture()
     }
 
     func initData(forGroup group: Group) {
@@ -49,6 +50,16 @@ class GroupFeedViewController: UIViewController, UITableViewDelegate, UITableVie
                 }
             })
         }
+    }
+
+    private func addTapGesture() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dimissKeyBoard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+
+    @objc func dimissKeyBoard() {
+        view.endEditing(true)
     }
 
     //MARK: - UITableViewDelegate & UITableViewDataSource
