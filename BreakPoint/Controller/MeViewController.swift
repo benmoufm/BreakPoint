@@ -19,11 +19,14 @@ class MeViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
 
     //MARK: - Variables
     var messages = [Message]()
+    var inEdition = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+        userDescriptionTextView.isEditable = false
+        userDescriptionTextView.backgroundColor = #colorLiteral(red: 0.2126879096, green: 0.2239724994, blue: 0.265286684, alpha: 1)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -41,6 +44,10 @@ class MeViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
                 self.tableView.reloadData()
             })
         }
+        inEdition = false
+        userDescriptionTextView.isEditable = inEdition
+        editProfileButton.setImage(#imageLiteral(resourceName: "compose"), for: .normal)
+        userDescriptionTextView.backgroundColor = #colorLiteral(red: 0.2126879096, green: 0.2239724994, blue: 0.265286684, alpha: 1)
     }
 
     //MARK: - UITableViewDelegate & DataSource
@@ -66,7 +73,15 @@ class MeViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
 
     //MARK: - Actions
     @IBAction func editProfileButtonPressed(_ sender: Any) {
-
+        inEdition = !inEdition
+        userDescriptionTextView.isEditable = inEdition
+        if inEdition {
+            editProfileButton.setImage(#imageLiteral(resourceName: "close"), for: .normal)
+            userDescriptionTextView.backgroundColor = #colorLiteral(red: 0.1607843137, green: 0.168627451, blue: 0.2039215686, alpha: 1)
+        } else {
+            editProfileButton.setImage(#imageLiteral(resourceName: "compose"), for: .normal)
+            userDescriptionTextView.backgroundColor = #colorLiteral(red: 0.2126879096, green: 0.2239724994, blue: 0.265286684, alpha: 1)
+        }
     }
 
     @IBAction func signoutButtonPressed(_ sender: Any) {
