@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class MeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextViewDelegate {
+class MeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextViewDelegate, UIPopoverPresentationControllerDelegate {
     //MARK: - Outlets
     @IBOutlet weak var editProfileButton: UIButton!
     @IBOutlet weak var profileImageView: UIImageView!
@@ -99,6 +99,11 @@ class MeViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         return cell
     }
 
+    //MARK: - UIPopoverPresentationControllerDelegate
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .none
+    }
+
     //MARK: - Actions
     @IBAction func editProfileButtonPressed(_ sender: Any) {
         inEdition = !inEdition
@@ -112,8 +117,17 @@ class MeViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
             userDescriptionTextView.backgroundColor = #colorLiteral(red: 0.2126879096, green: 0.2239724994, blue: 0.265286684, alpha: 1)
         }
     }
-    @IBAction func profileImageButtonPressed(_ sender: Any) {
-
+    @IBAction func profileImageButtonPressed(_ sender: UIButton) {
+        if inEdition {
+            //TODO: Image choice
+        } else {
+            let profilePictureViewController = ProfilePictureViewController(size: CGSize(width: 350, height: 350))
+            profilePictureViewController.modalPresentationStyle = .popover
+            profilePictureViewController.popoverPresentationController?.delegate = self
+            present(profilePictureViewController, animated: true, completion: nil)
+            profilePictureViewController.popoverPresentationController?.sourceView = sender
+            profilePictureViewController.popoverPresentationController?.sourceRect = sender.bounds
+        }
     }
 
     @IBAction func signoutButtonPressed(_ sender: Any) {
