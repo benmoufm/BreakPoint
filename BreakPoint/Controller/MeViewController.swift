@@ -11,8 +11,10 @@ import Firebase
 
 class MeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     //MARK: - Outlets
+    @IBOutlet weak var editProfileButton: UIButton!
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var emailLabel: UILabel!
+    @IBOutlet weak var userDescriptionTextView: UITextView!
     @IBOutlet weak var tableView: UITableView!
 
     //MARK: - Variables
@@ -63,6 +65,10 @@ class MeViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     }
 
     //MARK: - Actions
+    @IBAction func editProfileButtonPressed(_ sender: Any) {
+
+    }
+
     @IBAction func signoutButtonPressed(_ sender: Any) {
         let logoutPopup = UIAlertController(title: "Logout ?", message: "Are you sure you want to logout ?", preferredStyle: .actionSheet)
         let logoutAction = UIAlertAction(title: "Logout ?", style: .destructive) { (buttonTapped) in

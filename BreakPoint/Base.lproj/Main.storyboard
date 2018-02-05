@@ -795,6 +795,9 @@
                                             <constraint firstAttribute="width" constant="30" id="k5p-l9-Ppx"/>
                                         </constraints>
                                         <state key="normal" image="compose"/>
+                                        <connections>
+                                            <action selector="editProfileButtonPressed:" destination="tVL-Td-dSf" eventType="touchUpInside" id="1cP-X4-MeO"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.25490196079999999" green="0.27058823529999998" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -877,9 +880,11 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Me" image="me-tabIcon" selectedImage="me-tabIcon" id="ObW-mp-bHx"/>
                     <connections>
+                        <outlet property="editProfileButton" destination="M8U-k6-P2e" id="mPF-EB-zIJ"/>
                         <outlet property="emailLabel" destination="EJV-Aa-bjV" id="2gc-DC-qPT"/>
                         <outlet property="profileImageView" destination="NQS-ay-eR5" id="4bi-35-6ct"/>
                         <outlet property="tableView" destination="mNP-by-Z5f" id="zu2-81-aX5"/>
+                        <outlet property="userDescriptionTextView" destination="eL9-aS-XaI" id="yTw-JO-pnM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z7b-tE-Zww" userLabel="First Responder" sceneMemberID="firstResponder"/>
