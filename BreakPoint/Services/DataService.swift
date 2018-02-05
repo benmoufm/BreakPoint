@@ -52,6 +52,23 @@ class DataService {
         }
     }
 
+    func getUserDescription(forUID uid: String, completion: @escaping (_ description: String) -> Void) {
+        REF_USERS.observeSingleEvent(of: .value) { (userSnapshot) in
+            guard let userSnapshot = userSnapshot.children.allObjects as? [DataSnapshot]
+                else { return }
+            for snapshot in userSnapshot {
+                if snapshot.key == uid {
+                    guard let userDescription = snapshot.childSnapshot(forPath: "description").value as? String
+                        else {
+                            completion("Say something about you..")
+                            return
+                    }
+                    completion(userDescription)
+                }
+            }
+        }
+    }
+
     func getEmails(forGroup group: Group, completion: @escaping (_ emails: [String]) -> Void) {
         var emails = [String]()
         REF_USERS.observeSingleEvent(of: .value) { (userSnapshot) in
