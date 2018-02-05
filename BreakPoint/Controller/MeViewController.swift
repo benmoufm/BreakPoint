@@ -33,6 +33,11 @@ class MeViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.emailLabel.text = Auth.auth().currentUser?.email
+        DataService.instance.REF_USERS.observe(.value) { (snapshot) in
+            DataService.instance.getUserDescription(forUID: (Auth.auth().currentUser?.uid)!, completion: { (description) in
+                self.userDescriptionTextView.text = description
+            })
+        }
         DataService.instance.REF_FEED.observe(.value) { (snapshot) in
             DataService.instance.getAllFeedMessages(forUID: (Auth.auth().currentUser?.uid)!) { (messages) in
                 self.messages = messages.reversed()
