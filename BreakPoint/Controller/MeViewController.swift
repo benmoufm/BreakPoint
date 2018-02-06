@@ -119,7 +119,7 @@ class MeViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     }
     @IBAction func profileImageButtonPressed(_ sender: UIButton) {
         if inEdition {
-            //TODO: Image choice
+            present(ChoosePictureViewController(), animated: true, completion: nil)
         } else {
             let profilePictureViewController = ProfilePictureViewController(
                 size: CGSize(width: 350, height: 350),
