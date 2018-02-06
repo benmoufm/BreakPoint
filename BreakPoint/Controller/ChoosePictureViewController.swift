@@ -8,13 +8,15 @@
 
 import UIKit
 
-class ChoosePictureViewController: UIViewController {
+class ChoosePictureViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     //MARK: - Variables
     var navigationView = UIView()
     var closeButton = UIButton()
     var titleLabel = UILabel()
     var doneButton = UIButton()
     var segmentedControl = UISegmentedControl()
+    let layout = UICollectionViewFlowLayout()
+    lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: self.layout)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +27,19 @@ class ChoosePictureViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
 
+    //MARK: - UICollectionViewDelegate & DataSource
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 0
+    }
+
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 28
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        return UICollectionViewCell()
+    }
+
     //MARK: - Private functions
     private func setupLayout() {
         view.addSubview(navigationView)
@@ -32,6 +47,7 @@ class ChoosePictureViewController: UIViewController {
         navigationView.addSubview(titleLabel)
         navigationView.addSubview(closeButton)
         view.addSubview(segmentedControl)
+        view.addSubview(collectionView)
 
         navigationView.translatesAutoresizingMaskIntoConstraints = false
         navigationView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
@@ -60,6 +76,12 @@ class ChoosePictureViewController: UIViewController {
         segmentedControl.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         segmentedControl.widthAnchor.constraint(equalToConstant: 200.0).isActive = true
         segmentedControl.heightAnchor.constraint(equalToConstant: 30.0).isActive = true
+
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor, constant: 15.0).isActive = true
+        collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -15.0).isActive = true
+        collectionView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 15.0).isActive = true
+        collectionView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -15.0).isActive = true
     }
 
     private func setupNavigationView() {
@@ -89,6 +111,14 @@ class ChoosePictureViewController: UIViewController {
         segmentedControl.selectedSegmentIndex = 0
     }
 
+    private func setupCollectionView() {
+        layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        layout.itemSize = CGSize(width: 40, height: 40)
+        collectionView.backgroundColor = #colorLiteral(red: 0.2126879096, green: 0.2239724994, blue: 0.265286684, alpha: 1)
+        collectionView.delegate = self
+        collectionView.dataSource = self
+    }
+
     private func setup() {
         view.backgroundColor = #colorLiteral(red: 0.2126879096, green: 0.2239724994, blue: 0.265286684, alpha: 1)
         setupNavigationView()
@@ -96,6 +126,7 @@ class ChoosePictureViewController: UIViewController {
         setupTitleLabel()
         setupDoneButton()
         setupSegmentedControl()
+        setupCollectionView()
         setupLayout()
     }
 }
