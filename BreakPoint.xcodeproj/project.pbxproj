@@ -35,6 +35,7 @@
 		86CCC91D201B8A6E006845B9 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CCC91C201B8A6E006845B9 /* Message.swift */; };
 		86DD2C3D20287249001D6F51 /* ProfilePictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DD2C3C20287249001D6F51 /* ProfilePictureViewController.swift */; };
 		86DD2C3F2029AB8C001D6F51 /* ChoosePictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DD2C3E2029AB8C001D6F51 /* ChoosePictureViewController.swift */; };
+		86DD2C412029C6F9001D6F51 /* PictureCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DD2C402029C6F9001D6F51 /* PictureCollectionViewCell.swift */; };
 		C05548FD1290BE0A0D5F18DC /* Pods_BreakPoint.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F8A567C88E01C2E4E0CC64B /* Pods_BreakPoint.framework */; };
 /* End PBXBuildFile section */
 
@@ -72,6 +73,7 @@
 		86CCC91C201B8A6E006845B9 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		86DD2C3C20287249001D6F51 /* ProfilePictureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePictureViewController.swift; sourceTree = "<group>"; };
 		86DD2C3E2029AB8C001D6F51 /* ChoosePictureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoosePictureViewController.swift; sourceTree = "<group>"; };
+		86DD2C402029C6F9001D6F51 /* PictureCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +160,7 @@
 				8643D4DD201F3A020094B175 /* GroupTableViewCell.swift */,
 				8643D4E1201F7D7C0094B175 /* GroupFeedTableViewCell.swift */,
 				8687CAD420236F0B00211099 /* MeTableViewCell.swift */,
+				86DD2C402029C6F9001D6F51 /* PictureCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -340,6 +343,7 @@
 				86CCC8EE201B3290006845B9 /* AppDelegate.swift in Sources */,
 				86CCC8F0201B3290006845B9 /* FeedViewController.swift in Sources */,
 				8643D4E6201F92070094B175 /* UIViewControllerExtension.swift in Sources */,
+				86DD2C412029C6F9001D6F51 /* PictureCollectionViewCell.swift in Sources */,
 				8643D4DC201F25F40094B175 /* UserTableViewCell.swift in Sources */,
 				86CCC90B201B4178006845B9 /* AuthentificationViewController.swift in Sources */,
 				8643D4DA201F233E0094B175 /* CreateGroupViewController.swift in Sources */,

@@ -20,6 +20,7 @@ class ChoosePictureViewController: UIViewController, UICollectionViewDelegate, U
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        collectionView.register(PictureCollectionViewCell.self, forCellWithReuseIdentifier: "pictureCell")
         setup()
     }
 
@@ -28,16 +29,15 @@ class ChoosePictureViewController: UIViewController, UICollectionViewDelegate, U
     }
 
     //MARK: - UICollectionViewDelegate & DataSource
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 0
-    }
-
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 28
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return UICollectionViewCell()
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "pictureCell", for: indexPath) as? PictureCollectionViewCell
+            else { return UICollectionViewCell() }
+        cell.configure(atIndex: indexPath.item)
+        return cell
     }
 
     //MARK: - Private functions
@@ -113,10 +113,12 @@ class ChoosePictureViewController: UIViewController, UICollectionViewDelegate, U
 
     private func setupCollectionView() {
         layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-        layout.itemSize = CGSize(width: 40, height: 40)
+        layout.itemSize = CGSize(width: 80, height: 80)
         collectionView.backgroundColor = #colorLiteral(red: 0.2126879096, green: 0.2239724994, blue: 0.265286684, alpha: 1)
+        collectionView.showsVerticalScrollIndicator = false
         collectionView.delegate = self
         collectionView.dataSource = self
+        collectionView.reloadData()
     }
 
     private func setup() {
