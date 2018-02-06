@@ -36,6 +36,7 @@
 		86DD2C3D20287249001D6F51 /* ProfilePictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DD2C3C20287249001D6F51 /* ProfilePictureViewController.swift */; };
 		86DD2C3F2029AB8C001D6F51 /* ChoosePictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DD2C3E2029AB8C001D6F51 /* ChoosePictureViewController.swift */; };
 		86DD2C412029C6F9001D6F51 /* PictureCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DD2C402029C6F9001D6F51 /* PictureCollectionViewCell.swift */; };
+		86DD2C432029CD10001D6F51 /* PictureType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DD2C422029CD10001D6F51 /* PictureType.swift */; };
 		C05548FD1290BE0A0D5F18DC /* Pods_BreakPoint.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F8A567C88E01C2E4E0CC64B /* Pods_BreakPoint.framework */; };
 /* End PBXBuildFile section */
 
@@ -74,6 +75,7 @@
 		86DD2C3C20287249001D6F51 /* ProfilePictureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePictureViewController.swift; sourceTree = "<group>"; };
 		86DD2C3E2029AB8C001D6F51 /* ChoosePictureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoosePictureViewController.swift; sourceTree = "<group>"; };
 		86DD2C402029C6F9001D6F51 /* PictureCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureCollectionViewCell.swift; sourceTree = "<group>"; };
+		86DD2C422029CD10001D6F51 /* PictureType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +120,7 @@
 		86CCC8EC201B3290006845B9 /* BreakPoint */ = {
 			isa = PBXGroup;
 			children = (
+				86DD2C442029CD16001D6F51 /* Enums */,
 				86CCC905201B332E006845B9 /* Services */,
 				86CCC904201B330B006845B9 /* Extensions */,
 				86CCC903201B32EF006845B9 /* Model */,
@@ -190,6 +193,14 @@
 				86CCC912201B4725006845B9 /* AuthentificationService.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		86DD2C442029CD16001D6F51 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				86DD2C422029CD10001D6F51 /* PictureType.swift */,
+			);
+			path = Enums;
 			sourceTree = "<group>";
 		};
 		CE4965D99B944E173BB16AA4 /* Frameworks */ = {
@@ -354,6 +365,7 @@
 				86CCC911201B45F3006845B9 /* ShadowView.swift in Sources */,
 				86CCC919201B8145006845B9 /* UIViewExtension.swift in Sources */,
 				8687CAD520236F0B00211099 /* MeTableViewCell.swift in Sources */,
+				86DD2C432029CD10001D6F51 /* PictureType.swift in Sources */,
 				86CCC913201B4725006845B9 /* AuthentificationService.swift in Sources */,
 				86CCC917201B7E65006845B9 /* CreatePostViewController.swift in Sources */,
 				86CCC909201B37D1006845B9 /* DataService.swift in Sources */,

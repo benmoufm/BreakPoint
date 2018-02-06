@@ -21,8 +21,9 @@ class PictureCollectionViewCell: UICollectionViewCell {
         setup()
     }
 
-    func configure(atIndex index: Int) {
-        imageView.image = UIImage(named: "dark\(index)")
+    func configure(atIndex index: Int, pictureType: PictureType) {
+        imageView.image = UIImage(named: "\(pictureType.description)\(index)")
+        layer.backgroundColor = pictureType.color
         imageView.contentMode = .scaleAspectFit
     }
 

@@ -17,6 +17,7 @@ class ChoosePictureViewController: UIViewController, UICollectionViewDelegate, U
     var segmentedControl = UISegmentedControl()
     let layout = UICollectionViewFlowLayout()
     lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: self.layout)
+    var pictureType = PictureType.dark
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +37,7 @@ class ChoosePictureViewController: UIViewController, UICollectionViewDelegate, U
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "pictureCell", for: indexPath) as? PictureCollectionViewCell
             else { return UICollectionViewCell() }
-        cell.configure(atIndex: indexPath.item)
+        cell.configure(atIndex: indexPath.item, pictureType: pictureType)
         return cell
     }
 
