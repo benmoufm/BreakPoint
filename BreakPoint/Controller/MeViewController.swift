@@ -121,7 +121,10 @@ class MeViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         if inEdition {
             //TODO: Image choice
         } else {
-            let profilePictureViewController = ProfilePictureViewController(size: CGSize(width: 350, height: 350))
+            let profilePictureViewController = ProfilePictureViewController(
+                size: CGSize(width: 350, height: 350),
+                image: profileImageView.image!
+                )
             profilePictureViewController.modalPresentationStyle = .popover
             profilePictureViewController.popoverPresentationController?.delegate = self
             present(profilePictureViewController, animated: true, completion: nil)

@@ -13,8 +13,9 @@ class ProfilePictureViewController: UIViewController {
     private var size: CGSize
     private var imageView = UIImageView()
 
-    init(size: CGSize) {
+    init(size: CGSize, image: UIImage) {
         self.size = size
+        self.imageView.image = image
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -40,7 +41,6 @@ class ProfilePictureViewController: UIViewController {
 
     private func setup() {
         view.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        imageView.image = #imageLiteral(resourceName: "defaultProfileImage")
         setupLayout()
     }
 }
