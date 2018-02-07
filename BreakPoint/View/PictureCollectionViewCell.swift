@@ -10,6 +10,7 @@ import UIKit
 
 class PictureCollectionViewCell: UICollectionViewCell {
     let imageView = UIImageView()
+    var pictureType = PictureType.dark
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -21,9 +22,20 @@ class PictureCollectionViewCell: UICollectionViewCell {
         setup()
     }
 
+    override var isSelected: Bool {
+        didSet {
+            if isSelected {
+                layer.backgroundColor = pictureType.selectedColor
+            } else {
+                layer.backgroundColor = pictureType.color
+            }
+        }
+    }
+
     func configure(atIndex index: Int, pictureType: PictureType) {
+        self.pictureType = pictureType
         imageView.image = UIImage(named: "\(pictureType.description)\(index)")
-        layer.backgroundColor = pictureType.color
+        layer.backgroundColor = self.pictureType.color
         imageView.contentMode = .scaleAspectFit
     }
 

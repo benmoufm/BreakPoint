@@ -29,4 +29,13 @@ enum PictureType {
             return UIColor.gray.cgColor
         }
     }
+
+    var selectedColor: CGColor {
+        switch self {
+        case .light:
+            return UIColor.black.cgColor
+        case .dark:
+            return UIColor.white.cgColor
+        }
+    }
 }
