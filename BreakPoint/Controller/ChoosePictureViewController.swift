@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class ChoosePictureViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     //MARK: - Variables
@@ -18,6 +19,7 @@ class ChoosePictureViewController: UIViewController, UICollectionViewDelegate, U
     let layout = UICollectionViewFlowLayout()
     lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: self.layout)
     var pictureType = PictureType.dark
+    var selectedPictureName: String? = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +40,20 @@ class ChoosePictureViewController: UIViewController, UICollectionViewDelegate, U
         collectionView.reloadData()
     }
 
+    @objc func doneButtonPressed() {
+        if let profilePictureName = selectedPictureName {
+            DataService.instance.updateUserProfilePicture(
+                forUID: (Auth.auth().currentUser?.uid)!,
+                pictureName: profilePictureName,
+                upload: false,
+                completion: { (success) in
+                    if success {
+                        self.dismiss(animated: true, completion: nil)
+                    }
+            })
+        }
+    }
+
     //MARK: - UICollectionViewDelegate & DataSource
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 28
@@ -48,6 +64,10 @@ class ChoosePictureViewController: UIViewController, UICollectionViewDelegate, U
             else { return UICollectionViewCell() }
         cell.configure(atIndex: indexPath.item, pictureType: pictureType)
         return cell
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        selectedPictureName = "\(pictureType.description)\(indexPath.item)"
     }
 
     //MARK: - Private functions
@@ -112,6 +132,7 @@ class ChoosePictureViewController: UIViewController, UICollectionViewDelegate, U
     private func setupDoneButton() {
         doneButton.setTitle("DONE", for: .normal)
         doneButton.setTitleColor(#colorLiteral(red: 0.6212110519, green: 0.8334299922, blue: 0.3770503998, alpha: 1), for: .normal)
+        doneButton.addTarget(self, action: #selector(doneButtonPressed), for: .touchDown)
     }
 
     private func setupSegmentedControl() {
