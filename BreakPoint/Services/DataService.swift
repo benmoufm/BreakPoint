@@ -41,6 +41,11 @@ class DataService {
         completion(true)
     }
 
+    func updateUserProfilePicture(forUID uid: String, pictureName: String, upload: Bool, completion: @escaping (_ success: Bool) -> Void) {
+        REF_USERS.child(uid).child("avatar").updateChildValues(["pictureName": pictureName, "upload": upload])
+        completion(true)
+    }
+
     func getUserName(forUID uid: String, completion: @escaping (_ username: String) -> Void) {
         REF_USERS.observeSingleEvent(of: .value) { (userSnapshot) in
             guard let userSnapshot = userSnapshot.children.allObjects as? [DataSnapshot] else { return }
