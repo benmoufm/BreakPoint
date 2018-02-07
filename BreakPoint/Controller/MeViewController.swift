@@ -50,6 +50,13 @@ class MeViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
                 self.tableView.reloadData()
             })
         }
+        DataService.instance.REF_USERS.observe(.value) { (snapshot) in
+            DataService.instance.getUserProfilePicture(forUID: (Auth.auth().currentUser?.uid)!, completion: { (pictureName) in
+                guard let profilePictureName = pictureName else { return }
+                self.profileImageView.image = UIImage(named: profilePictureName)!
+                self.view.layoutIfNeeded()
+            })
+        }
         inEdition = false
         userDescriptionTextView.isEditable = inEdition
         editProfileButton.setImage(#imageLiteral(resourceName: "compose"), for: .normal)

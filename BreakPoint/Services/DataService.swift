@@ -74,6 +74,24 @@ class DataService {
         }
     }
 
+    func getUserProfilePicture(forUID uid: String, completion: @escaping (_ pictureName: String?) -> Void) {
+        REF_USERS.observeSingleEvent(of: .value) { (userSnapshot) in
+            guard let userSnapshot = userSnapshot.children.allObjects as? [DataSnapshot]
+                else { return }
+            for snapshot in userSnapshot {
+                if snapshot.key == uid {
+                    let avatarSnapshot = snapshot.childSnapshot(forPath: "avatar")
+                    guard let pictureName = avatarSnapshot.childSnapshot(forPath: "pictureName").value as? String
+                        else {
+                            completion(nil)
+                            return
+                    }
+                    completion(pictureName)
+                }
+            }
+        }
+    }
+
     func getEmails(forGroup group: Group, completion: @escaping (_ emails: [String]) -> Void) {
         var emails = [String]()
         REF_USERS.observeSingleEvent(of: .value) { (userSnapshot) in
