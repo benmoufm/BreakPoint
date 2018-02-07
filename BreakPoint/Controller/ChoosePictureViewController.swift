@@ -29,6 +29,15 @@ class ChoosePictureViewController: UIViewController, UICollectionViewDelegate, U
         dismiss(animated: true, completion: nil)
     }
 
+    @objc func changeSegment(sender: UISegmentedControl) {
+        if segmentedControl.selectedSegmentIndex == 0 {
+            pictureType = .dark
+        } else {
+            pictureType = .light
+        }
+        collectionView.reloadData()
+    }
+
     //MARK: - UICollectionViewDelegate & DataSource
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 28
@@ -110,6 +119,7 @@ class ChoosePictureViewController: UIViewController, UICollectionViewDelegate, U
         segmentedControl.insertSegment(withTitle: "Light", at: 1, animated: true)
         segmentedControl.tintColor = #colorLiteral(red: 0, green: 0.7235742211, blue: 0.8151144385, alpha: 1)
         segmentedControl.selectedSegmentIndex = 0
+        segmentedControl.addTarget(self, action: #selector(changeSegment(sender:)), for: .valueChanged)
     }
 
     private func setupCollectionView() {
