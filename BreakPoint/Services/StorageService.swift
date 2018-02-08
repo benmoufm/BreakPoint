@@ -29,8 +29,11 @@ class StorageService {
 
     func downloadPicture(url: String, completion: @escaping (UIImage) -> Void) {
         let httpsRef = STORAGE_BASE.reference(forURL: url)
-        httpsRef.getData(maxSize: 1 * 1024 * 1024) { (data, error) in
-            guard let data = data else { return }
+        httpsRef.getData(maxSize: INT64_MAX) { (data, error) in
+            guard let data = data else {
+                print(error as Any)
+                return
+            }
             let image = UIImage(data: data)!
             completion(image)
         }

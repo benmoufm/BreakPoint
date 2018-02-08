@@ -74,7 +74,7 @@ class DataService {
         }
     }
 
-    func getUserProfilePicture(forUID uid: String, completion: @escaping (_ pictureName: String?) -> Void) {
+    func getUserProfilePicture(forUID uid: String, completion: @escaping (_ picture: UIImage?) -> Void) {
         REF_USERS.observeSingleEvent(of: .value) { (userSnapshot) in
             guard let userSnapshot = userSnapshot.children.allObjects as? [DataSnapshot]
                 else { return }
@@ -82,16 +82,22 @@ class DataService {
                 if snapshot.key == uid {
                     let avatarSnapshot = snapshot.childSnapshot(forPath: "avatar")
                     guard let isUploaded = avatarSnapshot.childSnapshot(forPath: "upload").value as? Bool
-                        else { return }
+                        else {
+                            completion(nil)
+                            return
+                    }
+                    guard let pictureName = avatarSnapshot.childSnapshot(forPath: "pictureName").value as? String
+                        else {
+                            completion(nil)
+                            return
+                    }
                     if !isUploaded {
-                        guard let pictureName = avatarSnapshot.childSnapshot(forPath: "pictureName").value as? String
-                            else {
-                                completion(nil)
-                                return
-                        }
-                        completion(pictureName)
+                        let image = UIImage(named: pictureName)
+                        completion(image)
                     } else {
-                        completion(nil)
+                        StorageService.instance.downloadPicture(url: pictureName, completion: { (image) in
+                            completion(image)
+                        })
                     }
                 }
             }

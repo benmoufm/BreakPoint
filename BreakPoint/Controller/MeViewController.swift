@@ -51,9 +51,9 @@ class MeViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
             })
         }
         DataService.instance.REF_USERS.observe(.value) { (snapshot) in
-            DataService.instance.getUserProfilePicture(forUID: (Auth.auth().currentUser?.uid)!, completion: { (pictureName) in
-                guard let profilePictureName = pictureName else { return }
-                self.profileImageView.image = UIImage(named: profilePictureName)!
+            DataService.instance.getUserProfilePicture(forUID: (Auth.auth().currentUser?.uid)!, completion: { (picture) in
+                guard let profilePicture = picture else { return }
+                self.profileImageView.image = profilePicture
                 self.view.layoutIfNeeded()
             })
         }
