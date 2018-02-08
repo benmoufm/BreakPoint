@@ -37,6 +37,7 @@
 		86DD2C3F2029AB8C001D6F51 /* ChoosePictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DD2C3E2029AB8C001D6F51 /* ChoosePictureViewController.swift */; };
 		86DD2C412029C6F9001D6F51 /* PictureCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DD2C402029C6F9001D6F51 /* PictureCollectionViewCell.swift */; };
 		86DD2C432029CD10001D6F51 /* PictureType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DD2C422029CD10001D6F51 /* PictureType.swift */; };
+		86DD2C48202C6DBF001D6F51 /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DD2C47202C6DBF001D6F51 /* StorageService.swift */; };
 		C05548FD1290BE0A0D5F18DC /* Pods_BreakPoint.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F8A567C88E01C2E4E0CC64B /* Pods_BreakPoint.framework */; };
 /* End PBXBuildFile section */
 
@@ -76,6 +77,7 @@
 		86DD2C3E2029AB8C001D6F51 /* ChoosePictureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoosePictureViewController.swift; sourceTree = "<group>"; };
 		86DD2C402029C6F9001D6F51 /* PictureCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureCollectionViewCell.swift; sourceTree = "<group>"; };
 		86DD2C422029CD10001D6F51 /* PictureType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureType.swift; sourceTree = "<group>"; };
+		86DD2C47202C6DBF001D6F51 /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,6 +193,7 @@
 			children = (
 				86CCC908201B37D1006845B9 /* DataService.swift */,
 				86CCC912201B4725006845B9 /* AuthentificationService.swift */,
+				86DD2C47202C6DBF001D6F51 /* StorageService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -354,6 +357,7 @@
 				86CCC8EE201B3290006845B9 /* AppDelegate.swift in Sources */,
 				86CCC8F0201B3290006845B9 /* FeedViewController.swift in Sources */,
 				8643D4E6201F92070094B175 /* UIViewControllerExtension.swift in Sources */,
+				86DD2C48202C6DBF001D6F51 /* StorageService.swift in Sources */,
 				86DD2C412029C6F9001D6F51 /* PictureCollectionViewCell.swift in Sources */,
 				8643D4DC201F25F40094B175 /* UserTableViewCell.swift in Sources */,
 				86CCC90B201B4178006845B9 /* AuthentificationViewController.swift in Sources */,
