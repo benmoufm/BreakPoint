@@ -9,7 +9,9 @@
 import UIKit
 import Firebase
 
-class ChoosePictureViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class ChoosePictureViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource,
+UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+
     //MARK: - Variables
     var navigationView = UIView()
     var closeButton = UIButton()
@@ -19,6 +21,7 @@ class ChoosePictureViewController: UIViewController, UICollectionViewDelegate, U
     let layout = UICollectionViewFlowLayout()
     lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: self.layout)
     var uploadButton = UIButton()
+    let imagePicker = UIImagePickerController()
     var pictureType = PictureType.dark
     var selectedPictureName: String? = nil
 
@@ -53,6 +56,10 @@ class ChoosePictureViewController: UIViewController, UICollectionViewDelegate, U
                     }
             })
         }
+    }
+
+    @objc func uploadButtonPressed() {
+        present(imagePicker, animated: true, completion: nil)
     }
 
     //MARK: - UICollectionViewDelegate & DataSource
@@ -165,6 +172,13 @@ class ChoosePictureViewController: UIViewController, UICollectionViewDelegate, U
         uploadButton.setImage(#imageLiteral(resourceName: "upload"), for: .normal)
         uploadButton.backgroundColor = #colorLiteral(red: 0.6212110519, green: 0.8334299922, blue: 0.3770503998, alpha: 1)
         uploadButton.layer.cornerRadius = 40.0
+        uploadButton.addTarget(self, action: #selector(uploadButtonPressed), for: .touchDown)
+    }
+
+    private func setupImagePicker() {
+        imagePicker.delegate = self
+        imagePicker.allowsEditing = false
+        imagePicker.sourceType = .photoLibrary
     }
 
     private func setup() {
@@ -176,6 +190,7 @@ class ChoosePictureViewController: UIViewController, UICollectionViewDelegate, U
         setupSegmentedControl()
         setupCollectionView()
         setupUploadButton()
+        setupImagePicker()
         setupLayout()
     }
 }
