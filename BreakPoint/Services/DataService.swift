@@ -81,12 +81,18 @@ class DataService {
             for snapshot in userSnapshot {
                 if snapshot.key == uid {
                     let avatarSnapshot = snapshot.childSnapshot(forPath: "avatar")
-                    guard let pictureName = avatarSnapshot.childSnapshot(forPath: "pictureName").value as? String
-                        else {
-                            completion(nil)
-                            return
+                    guard let isUploaded = avatarSnapshot.childSnapshot(forPath: "upload").value as? Bool
+                        else { return }
+                    if !isUploaded {
+                        guard let pictureName = avatarSnapshot.childSnapshot(forPath: "pictureName").value as? String
+                            else {
+                                completion(nil)
+                                return
+                        }
+                        completion(pictureName)
+                    } else {
+                        completion(nil)
                     }
-                    completion(pictureName)
                 }
             }
         }

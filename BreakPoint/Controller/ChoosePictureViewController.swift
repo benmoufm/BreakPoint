@@ -78,6 +78,24 @@ UIImagePickerControllerDelegate, UINavigationControllerDelegate {
         selectedPictureName = "\(pictureType.description)\(indexPath.item)"
     }
 
+    //MARK: - UIImagePickerControllerDelegate
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        guard let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage else { return }
+        StorageService.instance.uploadPicture(image: pickedImage, uid: (Auth.auth().currentUser?.uid)!) { (url) in
+            DataService.instance.updateUserProfilePicture(
+                forUID: (Auth.auth().currentUser?.uid)!,
+                pictureName: url,
+                upload: true,
+                completion: { (success) in
+                    if success {
+                        debugPrint("UPLOADED SUCCESSFULLY")
+                        self.dismiss(animated: true, completion: nil)
+                        self.dismiss(animated: true, completion: nil)
+                    }
+            })
+        }
+    }
+
     //MARK: - Private functions
     private func setupLayout() {
         view.addSubview(navigationView)
