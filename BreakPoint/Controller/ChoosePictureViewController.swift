@@ -18,6 +18,7 @@ class ChoosePictureViewController: UIViewController, UICollectionViewDelegate, U
     var segmentedControl = UISegmentedControl()
     let layout = UICollectionViewFlowLayout()
     lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: self.layout)
+    var uploadButton = UIButton()
     var pictureType = PictureType.dark
     var selectedPictureName: String? = nil
 
@@ -78,6 +79,7 @@ class ChoosePictureViewController: UIViewController, UICollectionViewDelegate, U
         navigationView.addSubview(closeButton)
         view.addSubview(segmentedControl)
         view.addSubview(collectionView)
+        view.addSubview(uploadButton)
 
         navigationView.translatesAutoresizingMaskIntoConstraints = false
         navigationView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
@@ -112,6 +114,12 @@ class ChoosePictureViewController: UIViewController, UICollectionViewDelegate, U
         collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -15.0).isActive = true
         collectionView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 15.0).isActive = true
         collectionView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -15.0).isActive = true
+
+        uploadButton.translatesAutoresizingMaskIntoConstraints = false
+        uploadButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20.0).isActive = true
+        uploadButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20.0).isActive = true
+        uploadButton.heightAnchor.constraint(equalToConstant: 80.0).isActive = true
+        uploadButton.widthAnchor.constraint(equalToConstant: 80.0).isActive = true
     }
 
     private func setupNavigationView() {
@@ -145,12 +153,18 @@ class ChoosePictureViewController: UIViewController, UICollectionViewDelegate, U
 
     private func setupCollectionView() {
         layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-        layout.itemSize = CGSize(width: 80, height: 80)
+        layout.itemSize = CGSize(width: 100, height: 100)
         collectionView.backgroundColor = #colorLiteral(red: 0.2126879096, green: 0.2239724994, blue: 0.265286684, alpha: 1)
         collectionView.showsVerticalScrollIndicator = false
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.reloadData()
+    }
+
+    private func setupUploadButton() {
+        uploadButton.setImage(#imageLiteral(resourceName: "upload"), for: .normal)
+        uploadButton.backgroundColor = #colorLiteral(red: 0.6212110519, green: 0.8334299922, blue: 0.3770503998, alpha: 1)
+        uploadButton.layer.cornerRadius = 40.0
     }
 
     private func setup() {
@@ -161,6 +175,7 @@ class ChoosePictureViewController: UIViewController, UICollectionViewDelegate, U
         setupDoneButton()
         setupSegmentedControl()
         setupCollectionView()
+        setupUploadButton()
         setupLayout()
     }
 }
