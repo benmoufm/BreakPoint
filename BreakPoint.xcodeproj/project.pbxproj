@@ -38,6 +38,7 @@
 		86DD2C412029C6F9001D6F51 /* PictureCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DD2C402029C6F9001D6F51 /* PictureCollectionViewCell.swift */; };
 		86DD2C432029CD10001D6F51 /* PictureType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DD2C422029CD10001D6F51 /* PictureType.swift */; };
 		86DD2C48202C6DBF001D6F51 /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DD2C47202C6DBF001D6F51 /* StorageService.swift */; };
+		86DD2C4A202DA5E9001D6F51 /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DD2C49202DA5E9001D6F51 /* UIImageViewExtension.swift */; };
 		C05548FD1290BE0A0D5F18DC /* Pods_BreakPoint.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F8A567C88E01C2E4E0CC64B /* Pods_BreakPoint.framework */; };
 /* End PBXBuildFile section */
 
@@ -78,6 +79,7 @@
 		86DD2C402029C6F9001D6F51 /* PictureCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureCollectionViewCell.swift; sourceTree = "<group>"; };
 		86DD2C422029CD10001D6F51 /* PictureType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureType.swift; sourceTree = "<group>"; };
 		86DD2C47202C6DBF001D6F51 /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
+		86DD2C49202DA5E9001D6F51 /* UIImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,6 +186,7 @@
 			children = (
 				86CCC918201B8145006845B9 /* UIViewExtension.swift */,
 				8643D4E5201F92070094B175 /* UIViewControllerExtension.swift */,
+				86DD2C49202DA5E9001D6F51 /* UIImageViewExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -372,6 +375,7 @@
 				86DD2C432029CD10001D6F51 /* PictureType.swift in Sources */,
 				86CCC913201B4725006845B9 /* AuthentificationService.swift in Sources */,
 				86CCC917201B7E65006845B9 /* CreatePostViewController.swift in Sources */,
+				86DD2C4A202DA5E9001D6F51 /* UIImageViewExtension.swift in Sources */,
 				86CCC909201B37D1006845B9 /* DataService.swift in Sources */,
 				86CCC90F201B42EE006845B9 /* InsetTextField.swift in Sources */,
 				86CCC90D201B41B0006845B9 /* LoginViewController.swift in Sources */,
