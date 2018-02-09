@@ -15,6 +15,7 @@ class GroupFeedTableViewCell: UITableViewCell {
     @IBOutlet weak var contentLabel: UILabel!
 
     func configureCell(profileImage: UIImage, email: String, content: String) {
+        self.profileImageView.rounded()
         self.profileImageView.image = profileImage
         self.emailLabel.text = email
         self.contentLabel.text = content

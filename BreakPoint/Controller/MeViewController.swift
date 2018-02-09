@@ -28,6 +28,7 @@ class MeViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         userDescriptionTextView.delegate = self
         userDescriptionTextView.isEditable = false
         userDescriptionTextView.backgroundColor = #colorLiteral(red: 0.2126879096, green: 0.2239724994, blue: 0.265286684, alpha: 1)
+        profileImageView.rounded()
     }
 
     override func viewWillAppear(_ animated: Bool) {
