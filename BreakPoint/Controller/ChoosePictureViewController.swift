@@ -9,6 +9,11 @@
 import UIKit
 import Firebase
 
+protocol ChoosePictureViewControllerDelegate: class {
+    func startActivityIndicator()
+    func stopActivityIndicator()
+}
+
 class ChoosePictureViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource,
 UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
@@ -24,6 +29,7 @@ UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     let imagePicker = UIImagePickerController()
     var pictureType = PictureType.dark
     var selectedPictureName: String? = nil
+    weak var delegate: ChoosePictureViewControllerDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -81,6 +87,9 @@ UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     //MARK: - UIImagePickerControllerDelegate
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         guard let imageURL = info[UIImagePickerControllerImageURL] as? URL else { return }
+        self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
+        delegate?.startActivityIndicator()
         StorageService.instance.uploadPicture(url: imageURL, uid: (Auth.auth().currentUser?.uid)!) { (url) in
             DataService.instance.updateUserProfilePicture(
                 forUID: (Auth.auth().currentUser?.uid)!,
@@ -89,8 +98,7 @@ UIImagePickerControllerDelegate, UINavigationControllerDelegate {
                 completion: { (success) in
                     if success {
                         debugPrint("UPLOADED SUCCESSFULLY")
-                        self.dismiss(animated: true, completion: nil)
-                        self.dismiss(animated: true, completion: nil)
+                        self.delegate?.stopActivityIndicator()
                     }
             })
         }

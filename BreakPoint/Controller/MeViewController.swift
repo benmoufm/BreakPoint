@@ -9,7 +9,8 @@
 import UIKit
 import Firebase
 
-class MeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextViewDelegate, UIPopoverPresentationControllerDelegate {
+class MeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource,
+UITextViewDelegate, UIPopoverPresentationControllerDelegate, ChoosePictureViewControllerDelegate {
     //MARK: - Outlets
     @IBOutlet weak var editProfileButton: UIButton!
     @IBOutlet weak var profileImageView: UIImageView!
@@ -121,6 +122,19 @@ class MeViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         return .none
     }
 
+    //MARK: - ChoosePictureViewControllerDelegate
+    func startActivityIndicator() {
+        editProfileButton.isEnabled = false
+        activityIndicator.isHidden = false
+        activityIndicator.startAnimating()
+    }
+
+    func stopActivityIndicator() {
+        editProfileButton.isEnabled = true
+        activityIndicator.isHidden = true
+        activityIndicator.stopAnimating()
+    }
+
     //MARK: - Actions
     @IBAction func editProfileButtonPressed(_ sender: Any) {
         inEdition = !inEdition
@@ -136,7 +150,9 @@ class MeViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     }
     @IBAction func profileImageButtonPressed(_ sender: UIButton) {
         if inEdition {
-            present(ChoosePictureViewController(), animated: true, completion: nil)
+            let choosePictureViewController = ChoosePictureViewController()
+            choosePictureViewController.delegate = self
+            present(choosePictureViewController, animated: true, completion: nil)
         } else {
             let profilePictureViewController = ProfilePictureViewController(
                 size: CGSize(width: 350, height: 350),
