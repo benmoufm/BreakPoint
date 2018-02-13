@@ -80,8 +80,8 @@ UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     //MARK: - UIImagePickerControllerDelegate
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        guard let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage else { return }
-        StorageService.instance.uploadPicture(image: pickedImage, uid: (Auth.auth().currentUser?.uid)!) { (url) in
+        guard let imageURL = info[UIImagePickerControllerImageURL] as? URL else { return }
+        StorageService.instance.uploadPicture(url: imageURL, uid: (Auth.auth().currentUser?.uid)!) { (url) in
             DataService.instance.updateUserProfilePicture(
                 forUID: (Auth.auth().currentUser?.uid)!,
                 pictureName: url,

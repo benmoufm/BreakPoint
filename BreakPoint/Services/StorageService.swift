@@ -16,11 +16,9 @@ class StorageService {
 
     private(set) var REF_IMAGES = STORAGE_BASE.reference().child("images")
 
-    func uploadPicture(image: UIImage, uid: String, completion: @escaping (_ url: String) -> Void) {
-        var data = Data()
-        data = UIImagePNGRepresentation(image)!
+    func uploadPicture(url: URL, uid: String, completion: @escaping (_ url: String) -> Void) {
         let imageRef = REF_IMAGES.child(uid)
-        _ = imageRef.putData(data, metadata: nil, completion: { (metadata, error) in
+        _ = imageRef.putFile(from: url, metadata: nil, completion: { (metadata, error) in
             guard let metaData = metadata else { return }
             let downloadURL = metaData.downloadURL()
             completion((downloadURL?.absoluteString)!)
