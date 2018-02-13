@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import FBSDKLoginKit
 
 class AuthentificationViewController: UIViewController {
 
@@ -29,7 +30,14 @@ class AuthentificationViewController: UIViewController {
     }
 
     @IBAction func signinWithFacebookButtonPressed(_ sender: Any) {
-
+        let loginManager = FBSDKLoginManager()
+        loginManager.logIn(withReadPermissions: nil, from: self) { (loginResult, error) in
+            if let error = error {
+                print(error.localizedDescription)
+                return
+            }
+            self.dismiss(animated: true, completion: nil)
+        }
     }
 
     @IBAction func signinWithGoogleButtonPressed(_ sender: Any) {

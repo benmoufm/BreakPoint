@@ -8,6 +8,7 @@
 
 import Foundation
 import Firebase
+import FBSDKCoreKit
 
 class AuthentificationService {
     static let instance = AuthentificationService()
@@ -29,6 +30,17 @@ class AuthentificationService {
     func loginUser(withEmail email: String, andPassword password: String,
                    completion: @escaping (_ status: Bool,_ error: Error?) -> Void) {
         Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
+            if error != nil {
+                completion(false, error)
+                return
+            }
+            completion(true, nil)
+        }
+    }
+
+    func loginFacebookUser(completion: @escaping (_ status: Bool,_ error: Error?) -> Void) {
+        let credential = FacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
+        Auth.auth().signIn(with: credential) { (user, error) in
             if error != nil {
                 completion(false, error)
                 return

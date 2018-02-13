@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import FBSDKLoginKit
 
 class MeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource,
 UITextViewDelegate, UIPopoverPresentationControllerDelegate, ChoosePictureViewControllerDelegate {
@@ -170,6 +171,8 @@ UITextViewDelegate, UIPopoverPresentationControllerDelegate, ChoosePictureViewCo
         let logoutPopup = UIAlertController(title: "Logout ?", message: "Are you sure you want to logout ?", preferredStyle: .actionSheet)
         let logoutAction = UIAlertAction(title: "Logout ?", style: .destructive) { (buttonTapped) in
             do {
+                let loginManager = FBSDKLoginManager()
+                loginManager.logOut()
                 try Auth.auth().signOut()
                 let authentificationViewController =
                     self.storyboard?.instantiateViewController(withIdentifier: "AuthentificationViewController")
