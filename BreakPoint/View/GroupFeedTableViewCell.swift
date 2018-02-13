@@ -7,12 +7,20 @@
 //
 
 import UIKit
+import SDWebImage
 
 class GroupFeedTableViewCell: UITableViewCell {
     //MARK: - Outlets
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var contentLabel: UILabel!
+
+    func configure(url: URL, profileImagePlaceHolder: UIImage, email: String, content: String) {
+        self.profileImageView.rounded()
+        self.profileImageView.sd_setImage(with: url, placeholderImage: profileImagePlaceHolder, options: .highPriority)
+        self.emailLabel.text = email
+        self.contentLabel.text = content
+    }
 
     func configureCell(profileImage: UIImage, email: String, content: String) {
         self.profileImageView.rounded()

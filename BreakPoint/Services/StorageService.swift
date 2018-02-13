@@ -26,16 +26,4 @@ class StorageService {
             completion((downloadURL?.absoluteString)!)
         })
     }
-
-    func downloadPicture(url: String, completion: @escaping (UIImage) -> Void) {
-        let httpsRef = STORAGE_BASE.reference(forURL: url)
-        httpsRef.getData(maxSize: INT64_MAX) { (data, error) in
-            guard let data = data else {
-                print(error as Any)
-                return
-            }
-            let image = UIImage(data: data)!
-            completion(image)
-        }
-    }
 }

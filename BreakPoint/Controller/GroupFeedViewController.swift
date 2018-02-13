@@ -76,11 +76,15 @@ class GroupFeedViewController: UIViewController, UITableViewDelegate, UITableVie
             else { return UITableViewCell() }
         let message = messages[indexPath.row]
         DataService.instance.getUserName(forUID: message.senderId) { (email) in
-            DataService.instance.getUserProfilePicture(forUID: self.messages[indexPath.row].senderId, completion: { (picture) in
+            DataService.instance.getUserProfilePicture(forUID: self.messages[indexPath.row].senderId, completion: { (picture, url) in
                 if let profilePicture = picture {
                     cell.configureCell(profileImage: profilePicture, email: email, content: message.content)
                 } else {
-                    cell.configureCell(profileImage: #imageLiteral(resourceName: "defaultProfileImage"), email: email, content: message.content)
+                    if let url = url {
+                        cell.configure(url: url, profileImagePlaceHolder: #imageLiteral(resourceName: "defaultProfileImage"), email: email, content: message.content)
+                    } else {
+                        cell.configureCell(profileImage: #imageLiteral(resourceName: "defaultProfileImage"), email: email, content: message.content)
+                    }
                 }
 
             })

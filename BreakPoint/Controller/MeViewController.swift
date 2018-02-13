@@ -52,9 +52,16 @@ class MeViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
             })
         }
         DataService.instance.REF_USERS.observe(.value) { (snapshot) in
-            DataService.instance.getUserProfilePicture(forUID: (Auth.auth().currentUser?.uid)!, completion: { (picture) in
-                guard let profilePicture = picture else { return }
-                self.profileImageView.image = profilePicture
+            DataService.instance.getUserProfilePicture(forUID: (Auth.auth().currentUser?.uid)!, completion: { (picture, url) in
+                if let profilePicture = picture {
+                    self.profileImageView.image = profilePicture
+                } else {
+                    if let url = url {
+                        self.profileImageView.sd_setImage(with: url, placeholderImage: #imageLiteral(resourceName: "defaultProfileImage"), options: .highPriority)
+                    } else {
+                        self.profileImageView.image = #imageLiteral(resourceName: "defaultProfileImage")
+                    }
+                }
                 self.view.layoutIfNeeded()
             })
         }

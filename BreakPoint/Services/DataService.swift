@@ -8,6 +8,7 @@
 
 import Foundation
 import Firebase
+import SDWebImage
 
 let DB_BASE = Database.database().reference()
 
@@ -74,7 +75,7 @@ class DataService {
         }
     }
 
-    func getUserProfilePicture(forUID uid: String, completion: @escaping (_ picture: UIImage?) -> Void) {
+    func getUserProfilePicture(forUID uid: String, completion: @escaping (_ picture: UIImage?,_ url: URL?) -> Void) {
         REF_USERS.observeSingleEvent(of: .value) { (userSnapshot) in
             guard let userSnapshot = userSnapshot.children.allObjects as? [DataSnapshot]
                 else { return }
@@ -83,21 +84,20 @@ class DataService {
                     let avatarSnapshot = snapshot.childSnapshot(forPath: "avatar")
                     guard let isUploaded = avatarSnapshot.childSnapshot(forPath: "upload").value as? Bool
                         else {
-                            completion(nil)
+                            completion(nil, nil)
                             return
                     }
                     guard let pictureName = avatarSnapshot.childSnapshot(forPath: "pictureName").value as? String
                         else {
-                            completion(nil)
+                            completion(nil, nil)
                             return
                     }
                     if !isUploaded {
                         let image = UIImage(named: pictureName)
-                        completion(image)
+                        completion(image, nil)
                     } else {
-                        StorageService.instance.downloadPicture(url: pictureName, completion: { (image) in
-                            completion(image)
-                        })
+                        guard let url = URL(string: pictureName) else { return }
+                        completion(nil, url)
                     }
                 }
             }
