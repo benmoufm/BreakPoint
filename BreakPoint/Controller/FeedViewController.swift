@@ -42,7 +42,14 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "feedCell") as? FeedTableViewCell
             else { return UITableViewCell() }
         DataService.instance.getUserName(forUID: messages[indexPath.row].senderId) { (userName) in
-            cell.configure(profileImage: #imageLiteral(resourceName: "defaultProfileImage"), email: userName, content: self.messages[indexPath.row].content)
+            DataService.instance.getUserProfilePicture(forUID: self.messages[indexPath.row].senderId, completion: { (pictureName) in
+                if let profilePictureName = pictureName {
+                    cell.configure(profileImage: UIImage(named: profilePictureName)!, email: userName, content: self.messages[indexPath.row].content)
+                } else {
+                    cell.configure(profileImage: #imageLiteral(resourceName: "defaultProfileImage"), email: userName, content: self.messages[indexPath.row].content)
+                }
+
+            })
         }
         return cell
     }

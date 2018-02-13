@@ -36,12 +36,57 @@ class DataService {
         REF_USERS.child(uniqueID).updateChildValues(userData)
     }
 
+    func updateUserDescription(forUID uid: String, userDescription: String, completion: @escaping (_ success: Bool) -> Void) {
+        REF_USERS.child(uid).updateChildValues(["description": userDescription])
+        completion(true)
+    }
+
+    func updateUserProfilePicture(forUID uid: String, pictureName: String, upload: Bool, completion: @escaping (_ success: Bool) -> Void) {
+        REF_USERS.child(uid).child("avatar").updateChildValues(["pictureName": pictureName, "upload": upload])
+        completion(true)
+    }
+
     func getUserName(forUID uid: String, completion: @escaping (_ username: String) -> Void) {
         REF_USERS.observeSingleEvent(of: .value) { (userSnapshot) in
             guard let userSnapshot = userSnapshot.children.allObjects as? [DataSnapshot] else { return }
             for snapshot in userSnapshot {
                 if snapshot.key == uid {
                     completion(snapshot.childSnapshot(forPath: "email").value as! String)
+                }
+            }
+        }
+    }
+
+    func getUserDescription(forUID uid: String, completion: @escaping (_ description: String) -> Void) {
+        REF_USERS.observeSingleEvent(of: .value) { (userSnapshot) in
+            guard let userSnapshot = userSnapshot.children.allObjects as? [DataSnapshot]
+                else { return }
+            for snapshot in userSnapshot {
+                if snapshot.key == uid {
+                    guard let userDescription = snapshot.childSnapshot(forPath: "description").value as? String
+                        else {
+                            completion("Say something about you..")
+                            return
+                    }
+                    completion(userDescription)
+                }
+            }
+        }
+    }
+
+    func getUserProfilePicture(forUID uid: String, completion: @escaping (_ pictureName: String?) -> Void) {
+        REF_USERS.observeSingleEvent(of: .value) { (userSnapshot) in
+            guard let userSnapshot = userSnapshot.children.allObjects as? [DataSnapshot]
+                else { return }
+            for snapshot in userSnapshot {
+                if snapshot.key == uid {
+                    let avatarSnapshot = snapshot.childSnapshot(forPath: "avatar")
+                    guard let pictureName = avatarSnapshot.childSnapshot(forPath: "pictureName").value as? String
+                        else {
+                            completion(nil)
+                            return
+                    }
+                    completion(pictureName)
                 }
             }
         }

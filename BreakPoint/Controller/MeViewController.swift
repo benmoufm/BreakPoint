@@ -9,24 +9,35 @@
 import UIKit
 import Firebase
 
-class MeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class MeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextViewDelegate, UIPopoverPresentationControllerDelegate {
     //MARK: - Outlets
+    @IBOutlet weak var editProfileButton: UIButton!
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var emailLabel: UILabel!
+    @IBOutlet weak var userDescriptionTextView: UITextView!
     @IBOutlet weak var tableView: UITableView!
 
     //MARK: - Variables
     var messages = [Message]()
+    var inEdition = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+        userDescriptionTextView.delegate = self
+        userDescriptionTextView.isEditable = false
+        userDescriptionTextView.backgroundColor = #colorLiteral(red: 0.2126879096, green: 0.2239724994, blue: 0.265286684, alpha: 1)
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.emailLabel.text = Auth.auth().currentUser?.email
+        DataService.instance.REF_USERS.observe(.value) { (snapshot) in
+            DataService.instance.getUserDescription(forUID: (Auth.auth().currentUser?.uid)!, completion: { (description) in
+                self.userDescriptionTextView.text = description
+            })
+        }
         DataService.instance.REF_FEED.observe(.value) { (snapshot) in
             DataService.instance.getAllFeedMessages(forUID: (Auth.auth().currentUser?.uid)!) { (messages) in
                 self.messages = messages.reversed()
@@ -39,6 +50,39 @@ class MeViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
                 self.tableView.reloadData()
             })
         }
+        DataService.instance.REF_USERS.observe(.value) { (snapshot) in
+            DataService.instance.getUserProfilePicture(forUID: (Auth.auth().currentUser?.uid)!, completion: { (pictureName) in
+                guard let profilePictureName = pictureName else { return }
+                self.profileImageView.image = UIImage(named: profilePictureName)!
+                self.view.layoutIfNeeded()
+            })
+        }
+        inEdition = false
+        userDescriptionTextView.isEditable = inEdition
+        editProfileButton.setImage(#imageLiteral(resourceName: "compose"), for: .normal)
+        userDescriptionTextView.backgroundColor = #colorLiteral(red: 0.2126879096, green: 0.2239724994, blue: 0.265286684, alpha: 1)
+    }
+
+    private func updateUserDescription() {
+        if userDescriptionTextView.text != "" {
+            userDescriptionTextView.isEditable = false
+            editProfileButton.isEnabled = false
+            DataService.instance.updateUserDescription(
+                forUID: (Auth.auth().currentUser?.uid)!,
+                userDescription: userDescriptionTextView.text,
+                completion: { (success) in
+                    if success {
+                        self.editProfileButton.isEnabled = true
+                    }
+            })
+        } else {
+            userDescriptionTextView.text = "Say something about you.."
+        }
+    }
+
+    //MARK: - UITextViewDelegate
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        textView.text = ""
     }
 
     //MARK: - UITableViewDelegate & DataSource
@@ -62,7 +106,40 @@ class MeViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         return cell
     }
 
+    //MARK: - UIPopoverPresentationControllerDelegate
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .none
+    }
+
     //MARK: - Actions
+    @IBAction func editProfileButtonPressed(_ sender: Any) {
+        inEdition = !inEdition
+        userDescriptionTextView.isEditable = inEdition
+        if inEdition {
+            editProfileButton.setImage(#imageLiteral(resourceName: "close"), for: .normal)
+            userDescriptionTextView.backgroundColor = #colorLiteral(red: 0.1607843137, green: 0.168627451, blue: 0.2039215686, alpha: 1)
+        } else {
+            updateUserDescription()
+            editProfileButton.setImage(#imageLiteral(resourceName: "compose"), for: .normal)
+            userDescriptionTextView.backgroundColor = #colorLiteral(red: 0.2126879096, green: 0.2239724994, blue: 0.265286684, alpha: 1)
+        }
+    }
+    @IBAction func profileImageButtonPressed(_ sender: UIButton) {
+        if inEdition {
+            present(ChoosePictureViewController(), animated: true, completion: nil)
+        } else {
+            let profilePictureViewController = ProfilePictureViewController(
+                size: CGSize(width: 350, height: 350),
+                image: profileImageView.image!
+                )
+            profilePictureViewController.modalPresentationStyle = .popover
+            profilePictureViewController.popoverPresentationController?.delegate = self
+            present(profilePictureViewController, animated: true, completion: nil)
+            profilePictureViewController.popoverPresentationController?.sourceView = sender
+            profilePictureViewController.popoverPresentationController?.sourceRect = sender.bounds
+        }
+    }
+
     @IBAction func signoutButtonPressed(_ sender: Any) {
         let logoutPopup = UIAlertController(title: "Logout ?", message: "Are you sure you want to logout ?", preferredStyle: .actionSheet)
         let logoutAction = UIAlertAction(title: "Logout ?", style: .destructive) { (buttonTapped) in
