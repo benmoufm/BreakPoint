@@ -16,6 +16,7 @@ class MeViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var userDescriptionTextView: UITextView!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 
     //MARK: - Variables
     var messages = [Message]()
@@ -29,6 +30,7 @@ class MeViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         userDescriptionTextView.isEditable = false
         userDescriptionTextView.backgroundColor = #colorLiteral(red: 0.2126879096, green: 0.2239724994, blue: 0.265286684, alpha: 1)
         profileImageView.rounded()
+        activityIndicator.isHidden = true
     }
 
     override func viewWillAppear(_ animated: Bool) {
