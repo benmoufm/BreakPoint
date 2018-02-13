@@ -11,4 +11,5 @@ target 'BreakPoint' do
   pod 'Firebase/Auth'
   pod 'Firebase/Storage'
   pod 'SDWebImage', '~> 4.0'
+  pod 'FBSDKLoginKit'
 end
