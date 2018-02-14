@@ -217,8 +217,12 @@ class DataService {
             guard let userSnapshot = userSnapshot.children.allObjects as? [DataSnapshot] else { return }
             for snapshot in userSnapshot {
                 let email = snapshot.childSnapshot(forPath: "email").value as! String
-                if email.contains(query) && email != Auth.auth().currentUser?.email {
-                    emails.append(email)
+                DataService.instance.REF_USERS.observe(.value) { (snapshot) in
+                    DataService.instance.getUserName(forUID: (Auth.auth().currentUser?.uid)!, completion: { (userName) in
+                        if email.contains(query) && email != userName {
+                            emails.append(email)
+                        }
+                    })
                 }
             }
             completion(emails)

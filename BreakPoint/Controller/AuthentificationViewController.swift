@@ -36,7 +36,13 @@ class AuthentificationViewController: UIViewController {
                 print(error.localizedDescription)
                 return
             }
-            self.dismiss(animated: true, completion: nil)
+            AuthentificationService.instance.loginFacebookUser(completion: { (success, error) in
+                if let error = error {
+                    print(error.localizedDescription)
+                    return
+                }
+                self.dismiss(animated: true, completion: nil)
+            })
         }
     }
 

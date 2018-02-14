@@ -24,7 +24,11 @@ class CreatePostViewController: UIViewController, UITextViewDelegate {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.emailLabel.text = Auth.auth().currentUser?.email
+        DataService.instance.REF_USERS.observe(.value) { (snapshot) in
+            DataService.instance.getUserName(forUID: (Auth.auth().currentUser?.uid)!, completion: { (userName) in
+                self.emailLabel.text = userName
+            })
+        }
     }
 
     //MARK: - UITextViewDelegate

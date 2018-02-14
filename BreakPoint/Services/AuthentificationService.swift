@@ -45,6 +45,14 @@ class AuthentificationService {
                 completion(false, error)
                 return
             }
+            guard let user = user else { return }
+            DataService.instance.createDBUser(
+                uniqueID: user.uid,
+                userData: [
+                    "provider": user.providerID,
+                    "email": user.displayName as Any,
+                    ]
+            )
             completion(true, nil)
         }
     }
