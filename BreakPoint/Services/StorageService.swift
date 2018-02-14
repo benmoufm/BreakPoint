@@ -24,4 +24,13 @@ class StorageService {
             completion((downloadURL?.absoluteString)!)
         })
     }
+
+    func uploadPicture(data: Data, uid: String, completion: @escaping (_ url: String) -> Void) {
+        let imageRef = REF_IMAGES.child(uid)
+        _ = imageRef.putData(data, metadata: nil, completion: { (metadata, error) in
+            guard let metaData = metadata else { return }
+            let downloadURL = metaData.downloadURL()
+            completion((downloadURL?.absoluteString)!)
+        })
+    }
 }

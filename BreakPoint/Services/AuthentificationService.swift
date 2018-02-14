@@ -53,6 +53,25 @@ class AuthentificationService {
                     "email": user.displayName as Any,
                     ]
             )
+            if let url = user.photoURL {
+                do {
+                    let data = try NSData(contentsOf: url) as Data
+                    StorageService.instance.uploadPicture(data: data, uid: (Auth.auth().currentUser?.uid)!) { (url) in
+                        DataService.instance.updateUserProfilePicture(
+                            forUID: (Auth.auth().currentUser?.uid)!,
+                            pictureName: url,
+                            upload: true,
+                            completion: { (success) in
+                                if success {
+                                    debugPrint("UPLOADED SUCCESSFULLY")
+                                }
+                        })
+                    }
+                } catch {
+                    completion(true, nil)
+                    return
+                }
+            }
             completion(true, nil)
         }
     }
