@@ -51,6 +51,7 @@ class AuthentificationService {
                 userData: [
                     "provider": user.providerID,
                     "email": user.displayName as Any,
+                    "facebook": true
                     ]
             )
             if let url = user.photoURL {

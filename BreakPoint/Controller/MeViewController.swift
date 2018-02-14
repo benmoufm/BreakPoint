@@ -23,6 +23,7 @@ UITextViewDelegate, UIPopoverPresentationControllerDelegate, ChoosePictureViewCo
     //MARK: - Variables
     var messages = [Message]()
     var inEdition = false
+    var isFacebookLoggedIn = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,6 +73,11 @@ UITextViewDelegate, UIPopoverPresentationControllerDelegate, ChoosePictureViewCo
                 }
                 self.view.layoutIfNeeded()
             })
+        }
+        DataService.instance.isFacebookLoggedIn(forUID: (Auth.auth().currentUser?.uid)!) { (success, isFacebookLoggedIn) in
+            if success {
+                self.isFacebookLoggedIn = isFacebookLoggedIn
+            }
         }
         inEdition = false
         userDescriptionTextView.isEditable = inEdition
@@ -154,7 +160,7 @@ UITextViewDelegate, UIPopoverPresentationControllerDelegate, ChoosePictureViewCo
         }
     }
     @IBAction func profileImageButtonPressed(_ sender: UIButton) {
-        if inEdition {
+        if inEdition && !isFacebookLoggedIn {
             let choosePictureViewController = ChoosePictureViewController()
             choosePictureViewController.delegate = self
             present(choosePictureViewController, animated: true, completion: nil)

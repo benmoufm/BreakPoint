@@ -269,4 +269,20 @@ class DataService {
             completion(groups)
         }
     }
+
+    func isFacebookLoggedIn(forUID uid: String, completion: @escaping (_ status: Bool,_ isFacebookLoggedIn: Bool) -> Void) {
+        REF_USERS.observeSingleEvent(of: .value) { (snapshot) in
+            guard let snapshot = snapshot.children.allObjects as? [DataSnapshot] else { return }
+            for snap in snapshot {
+                if snap.key == uid {
+                    if let facebookLoggedIn = snap.childSnapshot(forPath: "facebook").value as? Bool {
+                        completion(true, facebookLoggedIn)
+                    } else {
+                        completion(true, false)
+                    }
+                    return
+                }
+            }
+        }
+    }
 }
